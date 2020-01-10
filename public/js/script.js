@@ -4,8 +4,7 @@
 $(document).ready(function() {
 	// jQuery code
 
-var html_download = '<a href="http://bootstrap-ecommerce.com/templates.html" class="btn btn-dark rounded-pill" style="font-size:13px; z-index:100; position: fixed; bottom:10px; right:10px;">Download theme</a>';
-$('body').prepend(html_download);
+
     
 
 	//////////////////////// Prevent closing from click inside dropdown
