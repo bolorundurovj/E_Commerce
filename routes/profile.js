@@ -1,17 +1,26 @@
 var express = require('express');
 var router = express.Router();
 var jwt = require('jsonwebtoken');
+var bodyParser = require('body-parser')
 
-var User = require('../models/user');
+//router.use(bodyParser);
+
+var inde = require('./index');
+
+
 
 const checkToken = (req, res, next) => {
   const header = req.headers['authorization'];
+ // var token = (req.body.token);
+ //console.log(req.cookies.token);
+ const heads = req.cookies.token;
 
-  if(typeof header !== 'undefined') {
-      const bearer = header.split(' ');
-      const token = bearer[1];
+  if(typeof heads !== 'undefined') {
+      //const bearer = header.split(' ');
+      const token = heads;
 
       req.token = token;
+      console.log(req.token);
       next();
   } else {
       //If header is undefined return Forbidden (403)
@@ -28,11 +37,12 @@ router.get('/', checkToken, (req, res, next) => {
         res.sendStatus(403)
     } else {
         //If token is successfully verified, we can send the autorized data 
-        res.render('profile', { title: 'E-Commerce || Profile'});
+        console.log('Token verified');
+        
     }
   
-  /*firstName: req.user.firstName,
-  lastName: req.user.lastName,
+  
+  /*lastName: req.user.lastName,
   email:req.user.email,
   password: req.user.password, 
   confirmPassword: req.user.confirmPassword,
@@ -41,6 +51,7 @@ router.get('/', checkToken, (req, res, next) => {
   terms: req.user.terms}  */
 
 });
+res.render('profile', {title: 'E-Commerce || Profile', firstName: req.body.firstName});
 });
 
 

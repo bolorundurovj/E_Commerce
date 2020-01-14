@@ -17,6 +17,8 @@ var loginRouter = require('./routes/login');
 var registerRouter = require('./routes/register');
 var cartRouter = require('./routes/cart');
 var profileRouter = require('./routes/profile');
+var bodyParser = require('body-parser')
+
 
 var app = express();
 

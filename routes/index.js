@@ -3,6 +3,9 @@ var router = express.Router();
 var bcrypt = require('bcrypt-nodejs');
 var mongoose = require('mongoose'); 
 const jwt = require('jsonwebtoken');
+var bodyParser = require('body-parser');
+
+
 
 var User = require('../models/user');
 
@@ -101,14 +104,14 @@ router.post('/login', function(req,res){
         console.log('incorrect password');
         }
         if(isMatch){
-          jwt.sign({ email: email }, 'secretkey', { expiresIn: '1h'}, (err, token) => {
-            // res.send(token);
-            res.render('index', {message:'Logged in successfully', success:'message', token});
-           console.log('logged in successfully');
-             
+            jwt.sign({ email: email }, 'secretkey', { expiresIn: '3h'}, (err, token) => {
+            res.cookie('token', token);
+            res.render('index', {message:'Logged in successfully', success:'message'});
+           console.log('logged in successfully', token);
+           //res.cookie('token', token, {maxAge: 100000 * 1000});
            });
+           
           }
-          
       });
       }
     })
