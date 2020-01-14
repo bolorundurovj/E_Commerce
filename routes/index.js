@@ -1,18 +1,23 @@
 var express = require('express');
 var router = express.Router();
-
+var bcrypt = require('bcrypt-nodejs');
 var mongoose = require('mongoose'); 
+const jwt = require('jsonwebtoken');
+
+var User = require('../models/user');
+
 mongoose.connect('mongodb://localhost:27017/ecommercestore'); 
 var db=mongoose.connection; 
 db.on('error', console.log.bind(console, "connection error")); 
 db.once('open', function(callback){ 
-    console.log(" Database connection succeeded"); 
+    console.log("Database connection succeeded"); 
 })
 
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'E-Commerce'});
+  res.render('index', { 
+    title: 'E-Commerce'});
 });
 
 router.post('/register', function(req,res){ 
@@ -39,26 +44,78 @@ router.post('/register', function(req,res){
   }
 
   else{
-    var data = { 
-      "firstName": firstName, 
-      "lastName": lastName,
-      "email":email, 
-      "password":password, 
-      "confirmPassword": confirmPassword,
-      "country":country,
-      "gender": gender,
-      "terms": terms
 
-  } 
-db.collection('users').insertOne(data,function(err, collection){ 
-      if (err) throw err; 
-      console.log("Record inserted Successfully"); 
-            
-  }); 
-        
- // return res.redirect('/login', ); 
- return res.render('./login', { message:'Registered Successfully. You can login now', success:'message'});
+    //validation passed
+    User.findOne({ email: email })
+    .then(user => {
+      if(user) {
+        res.render('./register', {
+          message:'Email already exists'
+      });
+    }
+    else{
+      bcrypt.hash(password, null, null, function(err, hash) {
+        // Store hash in your password DB
+        var hashedPass = hash;
+        var data = { 
+          "firstName": firstName, 
+          "lastName": lastName,
+          "email":email, 
+          "password":password, 
+          "confirmPassword": confirmPassword,
+          "hashedPass": hashedPass,
+          "country":country,
+          "gender": gender,
+          "terms": terms
+    
+      } 
+    db.collection('users').insertOne(data,function(err, collection){ 
+          if (err) throw err; 
+          console.log("New user registered Successfully"); 
+                
+      }); 
+             
+     return res.render('./login', { message:'Registered Successfully. You can login now', success:'message'});
+    });    
+  }
+  });
   }
 })
+
+router.post('/login', function(req,res){
+  var email = req.body.email;
+  var password =req.body.password;
+
+  User.findOne({ email: email })
+    .then(user => {
+      if(!user) {
+        res.render('./login', { message:'User does not exist' });
+        console.log('user does not exist'); 
+    }
+      else{
+        // Load hash from your password DB.
+      bcrypt.compare(password, user.hashedPass, function(err, isMatch) {
+        // res == true
+        if(!isMatch){
+        res.render('./login', {message:'Password is incorrect'});
+        console.log('incorrect password');
+        }
+        if(isMatch){
+          jwt.sign({ email: email }, 'secretkey', { expiresIn: '1h'}, (err, token) => {
+            // res.send(token);
+            res.render('index', {message:'Logged in successfully', success:'message', token});
+           console.log('logged in successfully');
+             
+           });
+          }
+          
+      });
+      }
+    })
+
+    
+})
+
+
 
 module.exports = router;

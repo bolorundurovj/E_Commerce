@@ -1,22 +1,4 @@
 
-{{#if message}}
-{{#if success}}
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-  <strong>{{message}}</strong> Success.
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
-{{else}}
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-  <strong>{{message}}</strong> Danger.
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
-{{/if}}
-{{/if}}
-
 <!-- ========================= SECTION CONTENT ========================= -->
 <section class="section-conten padding-y" style="min-height:84vh">
 
@@ -28,10 +10,10 @@
       	  <a href="#" class="btn btn-facebook btn-block mb-2"> <i class="fab fa-facebook-f"></i> &nbsp  Sign in with Facebook</a>
       	  <a href="#" class="btn btn-google btn-block mb-4"> <i class="fab fa-google"></i> &nbsp  Sign in with Google</a>
           <div class="form-group">
-			 <input name="email" class="form-control" placeholder="Your Email" type="text">
+			 <input name="email" class="form-control" placeholder="Your Email" type="text" required>
           </div> <!-- form-group// -->
           <div class="form-group">
-			<input name="password" class="form-control" placeholder="Password" type="password">
+			<input name="password" class="form-control" placeholder="Password" type="password" required>
           </div> <!-- form-group// -->
           
           <div class="form-group">
