@@ -6,4 +6,6 @@ router.get('/', (req, res, next) => {
   res.render('register', { title: 'E-Commerce || Register' });
 });
 
+
+
 module.exports = router;

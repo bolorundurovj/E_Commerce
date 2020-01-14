@@ -23,3 +23,8 @@ shipping
 refund
 contact
 settings
+checkout
+add-to-cart
+
+
+I want to keep record of : Orders, Catergories, Cart, Disputes, Users, Products,

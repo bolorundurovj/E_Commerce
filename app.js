@@ -3,12 +3,19 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const mongoose = require('mongoose');
+const jwt = require('jsonwebtoken');
+
+// Connecting to Mongoose
+mongoose.connect('mongodb://localhost/ecommercestore');
+const db = mongoose.connection;
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var helpRouter = require('./routes/help');
 var loginRouter = require('./routes/login');
 var registerRouter = require('./routes/register');
+var cartRouter = require('./routes/cart');
 
 var app = express();
 
@@ -27,6 +34,7 @@ app.use('/users', usersRouter);
 app.use('/help', helpRouter);
 app.use('/login', loginRouter);
 app.use('/register', registerRouter);
+app.use('/cart', cartRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
