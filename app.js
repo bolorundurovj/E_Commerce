@@ -17,7 +17,7 @@ var loginRouter = require('./routes/login');
 var registerRouter = require('./routes/register');
 var cartRouter = require('./routes/cart');
 var profileRouter = require('./routes/profile');
-var bodyParser = require('body-parser')
+var checkoutRouter = require('./routes/checkout');
 
 
 var app = express();
@@ -39,6 +39,7 @@ app.use('/login', loginRouter);
 app.use('/register', registerRouter);
 app.use('/cart', cartRouter);
 app.use('/profile', profileRouter);
+app.use('/checkout', checkoutRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

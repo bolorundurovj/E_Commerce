@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var jwt = require('jsonwebtoken');
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
+var createError = require('http-errors');
 
 //router.use(bodyParser);
 
@@ -34,7 +35,10 @@ router.get('/', checkToken, (req, res, next) => {
     if(err){
         //If error send Forbidden (403)
         console.log('ERROR: Could not connect to the protected route');
-        res.sendStatus(403)
+        //res.sendStatus(403)
+        // render the error page
+  //res.status(err.status || 403);
+  res.render('error');
     } else {
         //If token is successfully verified, we can send the autorized data 
         console.log('Token verified');
