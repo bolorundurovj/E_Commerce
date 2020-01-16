@@ -92,7 +92,7 @@ router.post('/login', function(req,res){
   User.findOne({ email: email })
     .then(user => {
       if(!user) {
-        res.render('./login', { message:'User does not exist' });
+        res.render('./login', { message:'User does not exist', data });
         console.log('user does not exist'); 
     }
       else{

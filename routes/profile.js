@@ -1,19 +1,23 @@
 var express = require('express');
 var router = express.Router();
 var jwt = require('jsonwebtoken');
-var bodyParser = require('body-parser');
-var createError = require('http-errors');
+var mongoose = require('mongoose'); 
 
-//router.use(bodyParser);
 
-var inde = require('./index');
 
+var User = require('../models/user');
+
+mongoose.connect('mongodb://localhost:27017/ecommercestore'); 
+var db=mongoose.connection; 
+db.on('error', console.log.bind(console, "connection error")); 
+db.once('open', function(callback){ 
+    console.log("Database connection succeeded for profile"); 
+})
 
 
 const checkToken = (req, res, next) => {
   const header = req.headers['authorization'];
- // var token = (req.body.token);
- //console.log(req.cookies.token);
+
  const heads = req.cookies.token;
 
   if(typeof heads !== 'undefined') {
@@ -46,18 +50,27 @@ router.get('/', checkToken, (req, res, next) => {
     }
   
   
-  /*lastName: req.user.lastName,
-  email:req.user.email,
-  password: req.user.password, 
-  confirmPassword: req.user.confirmPassword,
-  country:req.user.country, 
-  gender: req.user.gender,
-  terms: req.user.terms}  */
+  
 
 });
-res.render('profile', {title: 'E-Commerce || Profile', firstName: req.body.firstName});
+
+db.collection("users").findOne({email:req.body.email}, function(err, result) {
+  if (err) throw err;
+  console.log(result);
+  //db.close();
+  console.log("db closed");
 });
 
+User.find({}, function(err, docs){
+  if(err) {
+            res.json(err);
+ }
+  else {
+          res.render('profile', {title: 'E-Commerce || Profile', docs: docs[3] });
+          console.log(docs);
+  }
+});
+});
 
 
 module.exports = router;
