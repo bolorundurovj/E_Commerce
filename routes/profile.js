@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var jwt = require('jsonwebtoken');
 var mongoose = require('mongoose'); 
+var createError = require('http-errors');
 
 
 
@@ -39,10 +40,7 @@ router.get('/', checkToken, (req, res, next) => {
     if(err){
         //If error send Forbidden (403)
         console.log('ERROR: Could not connect to the protected route');
-        //res.sendStatus(403)
-        // render the error page
-  //res.status(err.status || 403);
-  res.render('error');
+      res.redirect('./login');
     } else {
         //If token is successfully verified, we can send the autorized data 
         console.log('Token verified');
