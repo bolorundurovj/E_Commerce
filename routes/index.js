@@ -27,6 +27,7 @@ router.post('/register', function(req,res){
   var firstName = req.body.firstName; 
   var lastName = req.body.lastName;
   var email =req.body.email; 
+  var city = req.body.city;
   var password = req.body.password; 
   var confirmPassword = req.body.confirmPassword;
   var country =req.body.country; 
@@ -67,6 +68,7 @@ router.post('/register', function(req,res){
           "password":password, 
           "confirmPassword": confirmPassword,
           "hashedPass": hashedPass,
+          "city": city,
           "country":country,
           "gender": gender,
           "terms": terms
@@ -106,8 +108,9 @@ router.post('/login', function(req,res){
         if(isMatch){
             jwt.sign({ email: email }, 'secretkey', { expiresIn: '3h'}, (err, token) => {
             res.cookie('token', token);
+            res.cookie('email', email);
             res.render('index', {message:'Logged in successfully', success:'message'});
-           console.log('logged in successfully', token);
+           console.log('logged in successfully', token + email);
            //res.cookie('token', token, {maxAge: 100000 * 1000});
            });
            

@@ -54,19 +54,19 @@ router.get('/', checkToken, (req, res, next) => {
 
 });
 
-db.collection("users").findOne({email:req.body.email}, function(err, result) {
+/*db.collection("users").findOne({email:req.body.email}, function(err, result) {
   if (err) throw err;
   console.log(result);
   //db.close();
   console.log("db closed");
-});
+});*/
 
-User.find({}, function(err, docs){
+db.collection("users").findOne({email: req.cookies.email}, function(err, docs){
   if(err) {
             res.json(err);
  }
   else {
-          res.render('profile', {title: 'E-Commerce || Profile', docs: docs[3] });
+          res.render('profile', {title: 'E-Commerce || Profile', docs: docs });
           console.log(docs);
   }
 });
