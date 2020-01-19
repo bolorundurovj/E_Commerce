@@ -59,9 +59,14 @@
 				    </div>
 				</form> <!-- search-wrap .end// -->
 			</div> <!-- col.// -->
+
+			
+
 			<div class="col-xl-4 col-lg-4 col-md-6">
 				<div class="widgets-wrap float-md-right">
-					<div class="widget-header mr-3">
+
+					{{#if email}}
+			<div class="widget-header mr-3">
 						<a href="/profile" class="widget-view">
 							<div class="icon-area">
 								<i class="fa fa-user"></i>
@@ -87,6 +92,19 @@
 							<small class="text"> Orders </small>
 						</a>
 					</div>
+			{{else}}
+			<div class="widget-header mr-3">
+						<a href="/profile" class="widget-view">
+							<div class="icon-area">
+								<i class="fa fa-user"></i>
+								<span class="notify">3</span>
+							</div>
+							<small class="text"> My profile </small>
+						</a>
+					</div>
+					
+			{{/if}}
+					
 					<div class="widget-header">
 						<a href="/cart" class="widget-view">
 							<div class="icon-area">

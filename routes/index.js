@@ -20,7 +20,7 @@ db.once('open', function(callback){
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { 
-    title: 'E-Commerce'});
+    title: 'E-Commerce', email: req.cookies.email});
 });
 
 router.post('/register', function(req,res){ 
