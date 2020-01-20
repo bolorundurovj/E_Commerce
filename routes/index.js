@@ -4,6 +4,7 @@ var bcrypt = require('bcrypt-nodejs');
 var mongoose = require('mongoose'); 
 const jwt = require('jsonwebtoken');
 var bodyParser = require('body-parser');
+var Product = require('../models/product');
 
 
 
@@ -19,8 +20,16 @@ db.once('open', function(callback){
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { 
-    title: 'E-Commerce', email: req.cookies.email});
+  Product.find({}, function(err, productChunk){
+    if(err) {
+              res.json(err);
+   }
+    else {
+      res.render('index', {title: 'E-Commerce', email: req.cookies.email, productChunk: productChunk[1]});
+            console.log(productChunk);
+    }
+  });
+ 
 });
 
 router.post('/register', function(req,res){ 
