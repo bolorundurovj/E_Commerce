@@ -8,13 +8,13 @@
 <div class="card">
 <article class="gallery-wrap"> 
 	<div class="img-big-wrap">
-	  <div> <a href="#"><img src="{{product.imagePath}}"></a></div>
+	  <div> <a href="#"><img src=".{{product.imagePath}}"></a></div>
 	</div> <!-- slider-product.// -->
 	<div class="thumbs-wrap">
-	  <a href="#" class="item-thumb"> <img src="images/items/15.jpg"></a>
-	  <a href="#" class="item-thumb"> <img src="images/items/15-1.jpg"></a>
-	  <a href="#" class="item-thumb"> <img src="images/items/15-2.jpg"></a>
-	  <a href="#" class="item-thumb"> <img src="images/items/15-1.jpg"></a>
+	  <a href="#" class="item-thumb"> <img src="../images/items/15.jpg"></a>
+	  <a href="#" class="item-thumb"> <img src="../images/items/15-1.jpg"></a>
+	  <a href="#" class="item-thumb"> <img src="../images/items/15-2.jpg"></a>
+	  <a href="#" class="item-thumb"> <img src="../images/items/15-1.jpg"></a>
 	</div> <!-- slider-nav.// -->
 </article> <!-- gallery-wrap .end// -->
 </div> <!-- card.// -->
@@ -22,7 +22,7 @@
 		<main class="col-md-6">
 <article class="product-info-aside">
 
-<h2 class="title mt-3">Hot sale unisex New Design Shoe </h2>
+<h2 class="title mt-3">{{product.title}} </h2>
 
 <div class="rating-wrap my-3">
 	<ul class="rating-stars">
@@ -42,16 +42,11 @@
 </div> <!-- rating-wrap.// -->
 
 <div class="mb-3"> 
-	<var class="price h4">USD 465,00</var> 
+	<var class="price h4">USD {{product.price}}</var> 
 	<span class="text-muted">USD 562.65 incl. VAT</span> 
 </div> <!-- price-detail-wrap .// -->
 
-<p>Compact sport shoe for running, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat </p>
+<p>{{product.description}} </p>
 
 
 <dl class="row">
@@ -112,10 +107,7 @@ consequat </p>
 	<div class="col-md-8">
 		<h5 class="title-description">Description</h5>
 		<p>
-			Lava stone grill, suitable for natural gas, with cast-iron cooking grid, piezo ignition, stainless steel burners, water tank, and thermocouple. Thermostatic adjustable per zone. Comes complete with lava rocks. Adjustable legs. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-			consequat. 
+			{{product.description}} 
 		</p>
 		<ul class="list-check">
 		<li>Material: Stainless steel</li>
@@ -166,7 +158,7 @@ consequat </p>
       
 
     <article class="media mb-3">
-      <a href="#"><img class="img-sm mr-3" src="images/posts/3.jpg"></a>
+      <a href="#"><img class="img-sm mr-3" src="../images/posts/3.jpg"></a>
       <div class="media-body">
         <h6 class="mt-0"><a href="#">How to use this item</a></h6>
         <p class="mb-2"> Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin </p>
@@ -174,7 +166,7 @@ consequat </p>
     </article>
 
     <article class="media mb-3">
-      <a href="#"><img class="img-sm mr-3" src="images/posts/2.jpg"></a>
+      <a href="#"><img class="img-sm mr-3" src="../images/posts/2.jpg"></a>
       <div class="media-body">
         <h6 class="mt-0"><a href="#">New tips and tricks</a></h6>
         <p class="mb-2"> Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin </p>
@@ -182,7 +174,7 @@ consequat </p>
     </article>
 
     <article class="media mb-3">
-      <a href="#"><img class="img-sm mr-3" src="images/posts/1.jpg"></a>
+      <a href="#"><img class="img-sm mr-3" src="../images/posts/1.jpg"></a>
       <div class="media-body">
         <h6 class="mt-0"><a href="#">New tips and tricks</a></h6>
         <p class="mb-2"> Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin </p>
