@@ -20,12 +20,12 @@ db.once('open', function(callback){
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  Product.find({}, function(err, productChunk){
+  db.collection('products').find().toArray( function(err, productChunk){
     if(err) {
               res.json(err);
    }
     else {
-      res.render('index', {title: 'E-Commerce', email: req.cookies.email, productChunk: productChunk[1]});
+      res.render('index', {title: 'E-Commerce', email: req.cookies.email, product: productChunk});
             console.log(productChunk);
     }
   });

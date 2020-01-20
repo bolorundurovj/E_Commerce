@@ -116,18 +116,24 @@
      </div>
    </div> <!-- col.// -->
    <div class="row no-gutters items-wrap">
+
 	   
-    <div class="col-md col-6">
+	   {{#each product}}
+	   <div class="col-md col-6">
      <figure class="card-product-grid card-sm">
-      <a href="#" class="img-wrap"> 
-       <img src="{{productChunk.imagePath}}"> 
+      <a href="./product" class="img-wrap"> 
+       <img src="{{this.imagePath}}"> 
       </a>
       <div class="text-wrap p-3">
-       	<a href="#" class="title">{{productChunk.category}}</a>
+       	<a href="#" class="title">{{this.category}}</a>
        	<span class="badge badge-danger"> -20% </span>
       </div>
    </figure>
  </div> <!-- col.// -->
+
+	   {{/each}}
+	   
+    
 
 </div>
 </div>
