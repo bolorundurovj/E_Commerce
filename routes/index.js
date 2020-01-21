@@ -131,6 +131,26 @@ router.post('/login', function(req,res){
     
 })
 
+router.post('/search', function(req,res){ 
+  var search = req.body.search; 
+  
+
+  if(!search) {
+    res.render('/', {message:'Please fill the searchbar'});
+  }
+  else{
+    db.collection('products').find({title: search}).toArray( function(err, productChunk){
+      if(err) {
+                res.json(err);
+     }
+      else {
+        res.render('./grid-page', { email: req.cookies.email, product: productChunk});
+              console.log(productChunk);
+      }
+    });
+}
+});
+
 
 
 module.exports = router;
