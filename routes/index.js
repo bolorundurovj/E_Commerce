@@ -19,7 +19,7 @@ db.once('open', function(callback){
 
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+/*router.get('/', function(req, res, next) {
   db.collection('products').find().toArray( function(err, productChunk){
     if(err) {
               res.json(err);
@@ -27,6 +27,19 @@ router.get('/', function(req, res, next) {
     else {
       res.render('index', {title: 'E-Commerce', email: req.cookies.email, product: productChunk});
             console.log(productChunk);
+    }
+  });
+ 
+});*/
+
+router.get('/', function(req, res, next) {
+  db.collection('deals').find().toArray( function(err, dealChunk){
+    if(err) {
+              res.json(err);
+   }
+    else {
+      res.render('index', {title: 'E-Commerce', email: req.cookies.email, deal: dealChunk});
+            console.log(dealChunk);
     }
   });
  
@@ -131,7 +144,7 @@ router.post('/login', function(req,res){
     
 })
 
-router.post('/search', function(req,res){ 
+/* router.post('/search', function(req,res){ 
   var search = req.body.search; 
   
 
@@ -149,7 +162,7 @@ router.post('/search', function(req,res){
       }
     });
 }
-});
+}); */
 
 
 

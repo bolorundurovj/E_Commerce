@@ -118,7 +118,7 @@
    <div class="row no-gutters items-wrap">
 
 	   
-	   {{#each product}}
+	  <!-- {{#each product}}
 	   <div class="col-md col-6">
      <figure class="card-product-grid card-sm">
       <a href="./product/{{this._id}}" class="img-wrap"> 
@@ -127,6 +127,21 @@
       <div class="text-wrap p-3">
        	<a href="#" class="title">{{this.category}}</a>
        	<span class="badge badge-danger"> -20% </span>
+      </div>
+   </figure>
+ </div>
+
+	   {{/each}}-->
+
+	   {{#each deal}}
+	   <div class="col-md col-6">
+     <figure class="card-product-grid card-sm">
+      <a href="./product/{{this._id}}" class="img-wrap"> 
+       <img src="{{this.imagePath}}"> 
+      </a>
+      <div class="text-wrap p-3">
+       	<a href="#" class="title">{{this.category}}</a>
+       	<span class="badge badge-danger"> {{this.percentOff}} </span>
       </div>
    </figure>
  </div> <!-- col.// -->
