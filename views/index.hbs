@@ -1,3 +1,13 @@
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Agree to our Terms & Policy</strong>.
+  <p>
+    Closing this and using our site means you accept our cookie policy
+  </p>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
 
 <div class="container">
 <!-- ========================= SECTION MAIN  ========================= -->
@@ -136,11 +146,11 @@
 	   {{#each deal}}
 	   <div class="col-md col-6">
      <figure class="card-product-grid card-sm">
-      <a href="./product/{{this._id}}" class="img-wrap"> 
+      <a href="./deal/{{this._id}}" class="img-wrap"> 
        <img src="{{this.imagePath}}"> 
       </a>
       <div class="text-wrap p-3">
-       	<a href="#" class="title">{{this.category}}</a>
+       	<a href="./deal/{{this._id}}" class="title">{{this.category}}</a>
        	<span class="badge badge-danger"> {{this.percentOff}} </span>
       </div>
    </figure>
@@ -176,79 +186,19 @@
 	</div> <!-- col.// -->
 	<div class="col-md-9">
 <ul class="row no-gutters bordered-cols">
-	<li class="col-6 col-lg-3 col-md-4">
-<a href="#" class="item"> 
-	<div class="card-body">
-		<h6 class="title">Well made women clothes with trending collection  </h6>
-		<img class="img-sm float-right" src="images/items/1.jpg"> 
-		<p class="text-muted"><i class="fa fa-map-marker-alt"></i> Guanjou, China</p>
-	</div>
-</a>
-	</li>
-	<li class="col-6 col-lg-3 col-md-4">
-<a href="#" class="item"> 
-	<div class="card-body">
-		<h6 class="title">Great clothes with trending collection  </h6>
-		<img class="img-sm float-right" src="images/items/2.jpg"> 
-		<p class="text-muted"><i class="fa fa-map-marker-alt"></i> Beijing, China</p>
-	</div>
-</a>
-	</li>
-	<li class="col-6 col-lg-3 col-md-4">
-<a href="#" class="item"> 
-	<div class="card-body">
-		<h6 class="title">Demo clothes with sample collection  </h6>
-		<img class="img-sm float-right" src="images/items/3.jpg"> 
-		<p class="text-muted"><i class="fa fa-map-marker-alt"></i> Tokyo, Japan</p>
-	</div>
-</a>
-	</li>
-	<li class="col-6 col-lg-3 col-md-4">
-<a href="#" class="item"> 
-	<div class="card-body">
-		<h6 class="title">Home and kitchen electronic  stuff collection  </h6>
-		<img class="img-sm float-right" src="images/items/4.jpg"> 
-		<p class="text-muted"><i class="fa fa-map-marker-alt"></i> Tashkent, Uzb</p>
-	</div>
-</a>	
-	</li>
-	<li class="col-6 col-lg-3 col-md-4">
-<a href="#" class="item"> 
-	<div class="card-body">
-		<h6 class="title">Home and kitchen electronic  stuff collection  </h6>
-		<img class="img-sm float-right" src="images/items/5.jpg"> 
-		<p class="text-muted"><i class="fa fa-map-marker-alt"></i> London, Britain</p>
-	</div>
-</a>
-	</li>
-	<li class="col-6 col-lg-3 col-md-4">
-<a href="#" class="item"> 
-	<div class="card-body">
-		<h6 class="title">Home and kitchen electronic  stuff collection  </h6>
-		<img class="img-sm float-right" src="images/items/6.jpg"> 
-		<p class="text-muted"><i class="fa fa-map-marker-alt"></i> Guanjou, China</p>
-	</div>
-</a>
-	</li>
-	<li class="col-6 col-lg-3 col-md-4">
-<a href="#" class="item"> 
-	<div class="card-body">
-		<h6 class="title">Well made clothes with trending collection </h6>
-		<img class="img-sm float-right" src="images/items/7.jpg"> 
-		<p class="text-muted"><i class="fa fa-map-marker-alt"></i> Hong Kong, China</p>
 
-	</div>
-</a>
-	</li>
+	{{#each clothes}}
 	<li class="col-6 col-lg-3 col-md-4">
 <a href="#" class="item"> 
 	<div class="card-body">
-		<h6 class="title">Home and kitchen interior  stuff collection   </h6>
-		<img class="img-sm float-right" src="images/items/6.jpg"> 
+		<h6 class="title">{{this.title}}  </h6>
+		<img class="img-sm float-right" src="{{this.imagePath}}"> 
 		<p class="text-muted"><i class="fa fa-map-marker-alt"></i> Guanjou, China</p>
 	</div>
 </a>
-	</li>
+</li>
+	{{/each}}
+	 
 </ul>
 	</div> <!-- col.// -->
 </div> <!-- row.// -->
@@ -276,79 +226,18 @@
 	</div> <!-- col.// -->
 	<div class="col-md-9">
 <ul class="row no-gutters bordered-cols">
+	{{#each electronics}}
 	<li class="col-6 col-lg-3 col-md-4">
 <a href="#" class="item"> 
 	<div class="card-body">
-		<h6 class="title">Well made electronic  stuff collection  </h6>
-		<img class="img-sm float-right" src="images/items/7.jpg"> 
-		<p class="text-muted"><i class="fa fa-map-marker-alt"></i> Tokyo, Japan</p>
-	</div>
-</a>
-	</li>
-	<li class="col-6 col-lg-3 col-md-4">
-<a href="#" class="item"> 
-	<div class="card-body">
-		<h6 class="title">Another demo text for item stuff goes here  </h6>
-		<img class="img-sm float-right" src="images/items/8.jpg"> 
-		<p class="text-muted"><i class="fa fa-map-marker-alt"></i> Hong Kong, China</p>
-	</div>
-</a>
-	</li>
-	<li class="col-6 col-lg-3 col-md-4">
-<a href="#" class="item"> 
-	<div class="card-body">
-		<h6 class="title">Home and kitchen electronic  stuff collection  </h6>
-		<img class="img-sm float-right" src="images/items/9.jpg"> 
-		<p class="text-muted"><i class="fa fa-map-marker-alt"></i> Tashkent, Uzb</p>
-	</div>
-</a>
-	</li>
-	<li class="col-6 col-lg-3 col-md-4">
-<a href="#" class="item"> 
-	<div class="card-body">
-		<h6 class="title">Group of electronic  stuff collection  </h6>
-		<img class="img-sm float-right" src="images/items/10.jpg"> 
-		<p class="text-muted"><i class="fa fa-map-marker-alt"></i> Guanjou, China</p>
-	</div>
-</a>	
-	</li>
-	<li class="col-6 col-lg-3 col-md-4">
-<a href="#" class="item"> 
-	<div class="card-body">
-		<h6 class="title">Home and kitchen electronic  stuff collection  </h6>
-		<img class="img-sm float-right" src="images/items/11.jpg"> 
+		<h6 class="title">{{this.title}}  </h6>
+		<img class="img-sm float-right" src="{{this.imagePath}}"> 
 		<p class="text-muted"><i class="fa fa-map-marker-alt"></i> Guanjou, China</p>
 	</div>
 </a>
 	</li>
-	<li class="col-6 col-lg-3 col-md-4">
-<a href="#" class="item"> 
-	<div class="card-body">
-		<h6 class="title">Home and kitchen electronic  stuff collection  </h6>
-		<img class="img-sm float-right" src="images/items/12.jpg"> 
-		<p class="text-muted"><i class="fa fa-map-marker-alt"></i> Guanjou, China</p>
-	</div>
-</a>
-	</li>
-	<li class="col-6 col-lg-3 col-md-4">
-<a href="#" class="item"> 
-	<div class="card-body">
-		<h6 class="title">Home and kitchen electronic  stuff collection  </h6>
-		<img class="img-sm float-right" src="images/items/1.jpg"> 
-		<p class="text-muted"><i class="fa fa-map-marker-alt"></i> Guanjou, China</p>
-
-	</div>
-</a>
-	</li>
-	<li class="col-6 col-lg-3 col-md-4">
-<a href="#" class="item"> 
-	<div class="card-body">
-		<h6 class="title">Home and kitchen electronic  stuff collection  </h6>
-		<img class="img-sm float-right" src="images/items/2.jpg"> 
-		<p class="text-muted"><i class="fa fa-map-marker-alt"></i> Guanjou, China</p>
-	</div>
-</a>
-	</li>
+	{{/each}}
+	
 </ul>
 	</div> <!-- col.// -->
 </div> <!-- row.// -->

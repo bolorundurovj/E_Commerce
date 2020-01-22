@@ -21,6 +21,7 @@ var checkoutRouter = require('./routes/checkout');
 var productRouter = require('./routes/product');
 var gridPageRouter = require('./routes/grid-page.js');
 var listPageRouter = require('./routes/list-page.js');
+var dealRouter = require('./routes/deals.js');
 
 
 var app = express();
@@ -46,6 +47,7 @@ app.use('/checkout', checkoutRouter);
 app.use('/product', productRouter);
 app.use('/grid-page', gridPageRouter);
 app.use('/list-page', listPageRouter);
+app.use('/deal', dealRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

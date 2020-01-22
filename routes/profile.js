@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var jwt = require('jsonwebtoken');
 var mongoose = require('mongoose'); 
+var createError = require('http-errors');
 
 
 
@@ -42,7 +43,16 @@ router.get('/', checkToken, (req, res, next) => {
         //res.sendStatus(403)
         // render the error page
   //res.status(err.status || 403);
+  // error handler
+router.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // render the error page
+  res.status(err.status || 403);
   res.render('error');
+});
     } else {
         //If token is successfully verified, we can send the autorized data 
         console.log('Token verified');
@@ -71,6 +81,13 @@ db.collection("users").findOne({email: req.cookies.email}, function(err, docs){
   }
 });
 });
+
+router.get('/logout', (req, res) => {
+  req.logout();
+  //res.send({message:"You are now logged out", success:message});
+  res.redirect('/login');
+});
+
 
 
 module.exports = router;

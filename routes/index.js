@@ -4,11 +4,12 @@ var bcrypt = require('bcrypt-nodejs');
 var mongoose = require('mongoose'); 
 const jwt = require('jsonwebtoken');
 var bodyParser = require('body-parser');
+
+
 var Product = require('../models/product');
-
-
-
+var Deal = require('../models/deals');
 var User = require('../models/user');
+var Cart = require('../models/cart');
 
 mongoose.connect('mongodb://localhost:27017/ecommercestore'); 
 var db=mongoose.connection; 
@@ -33,16 +34,29 @@ db.once('open', function(callback){
 });*/
 
 router.get('/', function(req, res, next) {
+  db.collection('products').find({category:"electronics"}).toArray( function(err, productElectronics){
+    if(err) {
+              res.json(err);
+   }
+    else {
+  db.collection('products').find({category:"clothing"}).toArray( function(err, productClothing){
+    if(err) {
+              res.json(err);
+   }
+    else {
   db.collection('deals').find().toArray( function(err, dealChunk){
     if(err) {
               res.json(err);
    }
     else {
-      res.render('index', {title: 'E-Commerce', email: req.cookies.email, deal: dealChunk});
+      res.render('index', {title: 'E-Commerce', email: req.cookies.email, deal: dealChunk, clothes: productClothing, electronics:productElectronics});
             console.log(dealChunk);
     }
+  })
+  }
   });
- 
+}
+});
 });
 
 router.post('/register', function(req,res){ 
@@ -124,14 +138,14 @@ router.post('/login', function(req,res){
       bcrypt.compare(password, user.hashedPass, function(err, isMatch) {
         // res == true
         if(!isMatch){
-        res.render('./login', {message:'Password is incorrect'});
+        res.render('./login', {message:'Password is incorrect', });
         console.log('incorrect password');
         }
         if(isMatch){
             jwt.sign({ email: email }, 'secretkey', { expiresIn: '3h'}, (err, token) => {
             res.cookie('token', token);
             res.cookie('email', email);
-            res.render('index', {message:'Logged in successfully', success:'message'});
+            res.render('index', {message:'Logged in successfully', success:'message', email: req.cookies.email});
            console.log('logged in successfully', token + email);
            //res.cookie('token', token, {maxAge: 100000 * 1000});
            });
@@ -163,6 +177,28 @@ router.post('/login', function(req,res){
     });
 }
 }); */
+
+router.get('/logout', (req, res) => {
+  //req.logout();
+  res.clearCookie('token');
+  res.clearCookie('email');
+  res.render('index', {message:"You are now logged out", success:'message'});
+});
+
+router.get('/add-to-cart/:id', function(req, res, next) {
+	var dealId = req.params.id;
+	const cart = new Cart(req.session.cart ? req.session.cart : {});
+
+	Deal.findById(dealId, function(err, product){
+		if(err){
+			return res.redirect('/');
+		}
+		cart.add(product, product.id);
+		req.session.cart = cart;
+		res.redirect('/');
+	});
+});
+
 
 
 
