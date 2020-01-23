@@ -212,7 +212,7 @@ var x = setInterval(function() {
 	<div class="home-category-banner bg-light-orange">
 		<h5 class="title">Best trending clothes only for summer</h5>
 		<p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-		<a href="#" class="btn btn-outline-primary rounded-pill">Source now</a>
+		<a href="./product/clothing" class="btn btn-outline-primary rounded-pill">Source now</a>
 		<img src="images/items/2.jpg" class="img-bg">
 	</div>
 
@@ -222,7 +222,7 @@ var x = setInterval(function() {
 
 	{{#each clothes}}
 	<li class="col-6 col-lg-3 col-md-4">
-<a href="#" class="item"> 
+<a href="./product/{{this._id}}" class="item"> 
 	<div class="card-body">
 		<h6 class="title">{{this.title}}  </h6>
 		<img class="img-sm float-right" src="{{this.imagePath}}"> 
@@ -252,7 +252,7 @@ var x = setInterval(function() {
 	<div class="home-category-banner bg-light-orange">
 		<h5 class="title">Machinery items for manufacturers</h5>
 		<p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-		<a href="#" class="btn btn-outline-primary rounded-pill">Source now</a>
+		<a href="./product/electronics" class="btn btn-outline-primary rounded-pill">Source now</a>
 		<img src="images/items/14.jpg" class="img-bg">
 	</div>
 
@@ -261,7 +261,7 @@ var x = setInterval(function() {
 <ul class="row no-gutters bordered-cols">
 	{{#each electronics}}
 	<li class="col-6 col-lg-3 col-md-4">
-<a href="#" class="item"> 
+<a href="./product/{{this._id}}" class="item"> 
 	<div class="card-body">
 		<h6 class="title">{{this.title}}  </h6>
 		<img class="img-sm float-right" src="{{this.imagePath}}"> 
