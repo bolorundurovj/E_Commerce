@@ -218,27 +218,5 @@ router.get('/logout', (req, res) => {
   res.render('index', {message:"You are now logged out", success:'message'});
 });
 
-router.get('/add-to-cart/:id', function(req, res, next) {
-  var productId = req.params.id;
-  console.log(productId);
-  var cart = new Cart(req.session.cart ? req.session.cart : {});
-
-  console.log(cart);
-
-db.collection('products').find({_id: req.params.id}, function(err, product){
-    console.log(product);
-    console.log(product.id);
-		if(err){
-      res.json(err);
-			return res.redirect('/');
-		}
-		cart.add(product, product.id);
-		req.session.cart = cart;
-		res.redirect('/');
-	});
-});
-
-
-
 
 module.exports = router;

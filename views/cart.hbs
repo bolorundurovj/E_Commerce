@@ -16,18 +16,21 @@
 </tr>
 </thead>
 <tbody>
+{{#if cart.items}}
+{{#each cart}}
 <tr>
 	<td>
 		<figure class="itemside">
-			<div class="aside"><img src="images/items/1.jpg" class="img-sm"></div>
+			<div class="aside"><img src=".{{this.imagePath}}" class="img-sm"></div>
 			<figcaption class="info">
-				<a href="#" class="title text-dark">Some name of item goes here nice</a>
+				<a href="#" class="title text-dark">{{this.title}}</a>
 				<p class="text-muted small">Size: XL, Color: blue, <br> Brand: Gucci</p>
 			</figcaption>
 		</figure>
 	</td>
 	<td> 
 		<select class="form-control">
+			<option value="{{this.qty}}">{{this.qty}}</option>
 			<option>1</option>
 			<option>2</option>	
 			<option>3</option>	
@@ -37,7 +40,7 @@
 	<td> 
 		<div class="price-wrap"> 
 			<var class="price">$1156.00</var> 
-			<small class="text-muted"> $315.20 each </small> 
+			<small class="text-muted">{{this.price}} each </small> 
 		</div> <!-- price-wrap .// -->
 	</td>
 	<td class="text-right"> 
@@ -45,63 +48,12 @@
 	<a href="#" class="btn btn-light"> Remove</a>
 	</td>
 </tr>
-<tr>
-	<td>
-		<figure class="itemside">
-			<div class="aside"><img src="images/items/2.jpg" class="img-sm"></div>
-			<figcaption class="info">
-				<a href="#" class="title text-dark">Product name  goes here nice</a>
-				<p class="text-muted small">Size: XL, Color: blue, <br> Brand: Gucci</p>
-			</figcaption>
-		</figure>
-	</td>
-	<td> 
-		<select class="form-control">
-			<option>1</option>
-			<option>2</option>	
-			<option>3</option>	
-			<option>4</option>	
-		</select> 
-	</td>
-	<td> 
-		<div class="price-wrap"> 
-			<var class="price">$149.97</var> 
-			<small  class="text-muted"> $75.00 each </small>  
-		</div> <!-- price-wrap .// -->
-	</td>
-	<td class="text-right"> 
-	<a data-original-title="Save to Wishlist" title="" href="#" class="btn btn-light" data-toggle="tooltip"> <i class="fa fa-heart"></i></a> 
-	<a href="#" class="btn btn-light btn-round"> Remove</a>
-	</td>
-</tr>
-<tr>
-	<td>
-		<figure class="itemside">
-			<div class="aside"><img src="images/items/3.jpg" class="img-sm"></div>
-			<figcaption class="info">
-				<a href="#" class="title text-dark">Another name of some product goes just here as a demo text </a>
-				<p class="small text-muted">Size: XL, Color: blue,  Brand: Tissot</p>
-			</figcaption>
-		</figure>
-	</td>
-	<td> 
-		<select class="form-control">
-			<option>1</option>
-			<option>2</option>	
-			<option>3</option>	
-		</select> 
-	</td>
-	<td> 
-		<div class="price-wrap"> 
-			<var class="price">$98.00</var> 
-			<small class="text-muted"> $578.00 each</small> 
-		</div> <!-- price-wrap .// -->
-	</td>
-	<td class="text-right"> 
-		<a data-original-title="Save to Wishlist" title="" href="#" class="btn btn-light" data-toggle="tooltip"> <i class="fa fa-heart"></i></a> 
-		<a href="#" class="btn btn-light btn-round"> Remove</a>
-	</td>
-</tr>
+{{/each}}
+{{/if}}
+
+{{#else}}
+<h3>There are no items in your cart</h3>
+{{/else}}
 </tbody>
 </table>
 
@@ -136,15 +88,15 @@
 			<div class="card-body">
 					<dl class="dlist-align">
 					  <dt>Total price:</dt>
-					  <dd class="text-right">USD 568</dd>
+					  <dd class="text-right">USD {{this.total}}</dd>
 					</dl>
 					<dl class="dlist-align">
 					  <dt>Discount:</dt>
-					  <dd class="text-right">USD 658</dd>
+					  <dd class="text-right">USD 0</dd>
 					</dl>
 					<dl class="dlist-align">
 					  <dt>Total:</dt>
-					  <dd class="text-right  h5"><strong>$1,650</strong></dd>
+					  <dd class="text-right  h5"><strong>${{this.total}}</strong></dd>
 					</dl>
 					<hr>
 					<p class="text-center mb-3">

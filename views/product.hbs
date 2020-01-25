@@ -79,9 +79,11 @@
 			</div>
 		</div> <!-- col.// -->
 		<div class="form-group col-md">
-			<a href="/add-to-cart/{{product._id}}"  class="btn  btn-primary"> 
-				<i class="fas fa-shopping-cart"></i> <span class="text">Add to cart</span> 
-			</a>
+			<form method="POST" class="btn btn-primary" action="/cart/{{product._id}}">
+			<i class="fas fa-shopping-cart"></i>
+				<input type="submit" value="Add To Cart" class="btn btn-primary">
+			</form>
+			
 			<a href="#" class="btn btn-light">
         <i class="fas fa-envelope"></i> <span class="text">Contact supplier</span> 
 			</a>
