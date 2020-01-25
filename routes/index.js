@@ -123,8 +123,8 @@ router.post('/register', function(req,res){
       let transport = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-                user: 'bolorundurovb@gmail.com',
-                pass: 'V@l1^nt_J'
+                user: 'email@gmail.com',
+                pass: 'password'
               }
       });
       let message = {
