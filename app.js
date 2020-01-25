@@ -22,6 +22,7 @@ var productRouter = require('./routes/product');
 var gridPageRouter = require('./routes/grid-page.js');
 var listPageRouter = require('./routes/list-page.js');
 var dealRouter = require('./routes/deals.js');
+var session = require('express-session');
 
 
 var app = express();

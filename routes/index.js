@@ -4,6 +4,7 @@ var bcrypt = require('bcrypt-nodejs');
 var mongoose = require('mongoose'); 
 const jwt = require('jsonwebtoken');
 var bodyParser = require('body-parser');
+var session = require('express-session');
 
 
 var Product = require('../models/product');
@@ -186,14 +187,19 @@ router.get('/logout', (req, res) => {
 });
 
 router.get('/add-to-cart/:id', function(req, res, next) {
-	var dealId = req.params.id;
-	const cart = new Cart(req.session.cart ? req.session.cart : {});
+  var productId = req.params.id;
+  console.log(productId);
+  var cart = new Cart(req.session.cart ? req.session.cart : {items:{}});
+  console.log(cart);
 
-	Deal.findById(dealId, function(err, product){
+db.collection('products').findById(productId, function(err, product){
+    console.log(product);
+    console.log(product._id);
 		if(err){
+      res.json(err);
 			return res.redirect('/');
 		}
-		cart.add(product, product.id);
+		cart.add(product, product._id);
 		req.session.cart = cart;
 		res.redirect('/');
 	});
