@@ -5,6 +5,9 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
+var session = require('express-session');
+var MongoStore = require('connect-mongo')(session);
+
 
 // Connecting to Mongoose
 mongoose.connect('mongodb://localhost/ecommercestore');
@@ -22,7 +25,6 @@ var productRouter = require('./routes/product');
 var gridPageRouter = require('./routes/grid-page.js');
 var listPageRouter = require('./routes/list-page.js');
 var dealRouter = require('./routes/deals.js');
-var session = require('express-session');
 
 
 var app = express();
@@ -49,6 +51,14 @@ app.use('/product', productRouter);
 app.use('/grid-page', gridPageRouter);
 app.use('/list-page', listPageRouter);
 app.use('/deal', dealRouter);
+
+app.use(session({
+  secret: 'secret',
+  resave: false,
+  saveUninitialized: false,
+  store: new MongoStore({ mongooseConnection: mongoose.connection }),
+  cookie: { maxAge: 180*60*1000 }
+}));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
