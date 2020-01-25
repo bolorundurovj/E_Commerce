@@ -35,7 +35,7 @@ router.get('/', (req, res, next) => {
         displayCart.total = total;
 
         //Render Cart
-      res.render('cart', { title: 'E-Commerce || Cart', email: req.cookies.email, cart: displayCart});
+      res.render('cart', { title: 'E-Commerce || Cart', email: req.cookies.email, cart: cart});
 });
 
 router.post('/:id', function (req, res) {
@@ -62,8 +62,7 @@ Product.findOne({_id:req.params.id}, function(err,product){
           }
           console.log(cart);
       }
-      res.redirect('/cart');
-      //res.render('./cart', {cart: cart, message:'Added to cart successfully', success:'message'});
+      res.render('./cart', {cart: cart, message:'Added to cart successfully', success:'message'});
       // res.redirect('/cart',);
   });
 });
