@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="4fe53e1e-ca83-4edf-be4f-5266274fd930" name="Default Changelist" comment="" />
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/package.json" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="170" />
+    <option name="y" value="91" />
+    <option name="width" value="1026" />
+    <option name="height" value="546" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="E_Commerce" type="b2602c69:ProjectViewProjectNode" />
+              <item name="E_Commerce" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="javascript.nodejs.core.library.configured.version" value="10.16.0" />
+    <property name="nodejs_interpreter_path" value="node" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4fe53e1e-ca83-4edf-be4f-5266274fd930" name="Default Changelist" comment="" />
+      <created>1578387549727</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1578387549727</updated>
+      <workItem from="1578387551376" duration="432000" />
+      <workItem from="1578388362140" duration="56000" />
+      <workItem from="1578658958040" duration="497000" />
+      <workItem from="1578692921817" duration="177000" />
+      <workItem from="1578747913311" duration="133000" />
+      <workItem from="1578780777182" duration="49000" />
+      <workItem from="1578780908964" duration="501000" />
+      <workItem from="1578944986974" duration="70000" />
+      <workItem from="1578998942703" duration="69000" />
+      <workItem from="1579011652506" duration="57000" />
+      <workItem from="1579036918653" duration="113000" />
+      <workItem from="1579083425661" duration="49000" />
+      <workItem from="1579092454759" duration="648000" />
+      <workItem from="1579093839968" duration="54000" />
+      <workItem from="1579203396079" duration="67000" />
+      <workItem from="1579267365984" duration="646000" />
+      <workItem from="1579373544864" duration="85000" />
+      <workItem from="1579450512042" duration="155000" />
+      <workItem from="1579451387981" duration="123000" />
+      <workItem from="1579452152354" duration="79000" />
+      <workItem from="1579515989749" duration="63000" />
+      <workItem from="1579536918699" duration="93000" />
+      <workItem from="1579539551746" duration="518000" />
+      <workItem from="1579540091391" duration="143000" />
+      <workItem from="1579629025978" duration="689000" />
+      <workItem from="1579632455310" duration="799000" />
+      <workItem from="1579721757520" duration="228000" />
+      <workItem from="1579796392372" duration="53000" />
+      <workItem from="1579798128966" duration="54000" />
+      <workItem from="1579809773944" duration="43000" />
+      <workItem from="1579857406310" duration="19000" />
+      <workItem from="1579857467363" duration="141000" />
+      <workItem from="1579941884992" duration="193000" />
+      <workItem from="1579948987231" duration="637000" />
+      <workItem from="1579949841157" duration="90000" />
+    </task>
+    <task id="LOCAL-00001" summary="Fixed Major UI Bug">
+      <created>1578692974035</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1578692974035</updated>
+    </task>
+    <task id="LOCAL-00002" summary="added some routes">
+      <created>1578780805134</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1578780805134</updated>
+    </task>
+    <task id="LOCAL-00003" summary="added some routes">
+      <created>1578780927775</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1578780927775</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Added new routes">
+      <created>1578945014963</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1578945014963</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Schema stuff">
+      <created>1578998983581</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1578998983581</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Added alerts and JWT">
+      <created>1579011676583</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1579011676583</updated>
+    </task>
+    <task id="LOCAL-00007" summary="fixed route protection">
+      <created>1579037009393</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1579037009393</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Added new pages">
+      <created>1579083456049</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1579083456049</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Minor">
+      <created>1579092475219</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1579092475219</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Minor">
+      <created>1579093874184</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1579093874184</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Retieve user data to profile">
+      <created>1579203429812</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1579203429812</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Minor changes to profile">
+      <created>1579267398746</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1579267398747</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Reset checkout">
+      <created>1579373604564</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1579373604564</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Fixed Profile partially">
+      <created>1579450624968</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1579450624969</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Fixed navbar">
+      <created>1579451407982</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1579451407982</updated>
+    </task>
+    <task id="LOCAL-00016" summary="New models">
+      <created>1579452208372</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1579452208372</updated>
+    </task>
+    <task id="LOCAL-00017" summary="working on products/deals">
+      <created>1579516032770</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1579516032770</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Fixed product/deals">
+      <created>1579536982276</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1579536982276</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Fixed product detail page">
+      <created>1579540202521</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1579540202521</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Minor fix">
+      <created>1579629088336</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1579629088336</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Results : Grid &amp; List View">
+      <created>1579629118318</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1579629118318</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Fixed Deals">
+      <created>1579632504481</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1579632504481</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Major Update">
+      <created>1579721979805</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1579721979805</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Minor Update">
+      <created>1579796421679</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1579796421679</updated>
+    </task>
+    <task id="LOCAL-00025" summary="fixed checkout ui">
+      <created>1579798152445</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1579798152445</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Minor change(fixed links) to index">
+      <created>1579809815311</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1579809815311</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Minor change(fixed links) to routes">
+      <created>1579857422392</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1579857422392</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Added express sessions">
+      <created>1579942037741</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1579942037741</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Added dependencies">
+      <created>1579949649931</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1579949649931</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="7823000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18303572" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="npm" order="2" side_tool="true" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32771084" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="8" visible="true" weight="0.22185971" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32771084" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <MESSAGE value="Added new routes" />
+    <MESSAGE value="Schema stuff" />
+    <MESSAGE value="Added alerts and JWT" />
+    <MESSAGE value="fixed route protection" />
+    <MESSAGE value="Added new pages" />
+    <MESSAGE value="Minor" />
+    <MESSAGE value="Retieve user data to profile" />
+    <MESSAGE value="Minor changes to profile" />
+    <MESSAGE value="Reset checkout" />
+    <MESSAGE value="Fixed Profile partially" />
+    <MESSAGE value="Fixed navbar" />
+    <MESSAGE value="New models" />
+    <MESSAGE value="working on products/deals" />
+    <MESSAGE value="Fixed product/deals" />
+    <MESSAGE value="Fixed product detail page" />
+    <MESSAGE value="Minor fix" />
+    <MESSAGE value="Results : Grid &amp; List View" />
+    <MESSAGE value="Fixed Deals" />
+    <MESSAGE value="Major Update" />
+    <MESSAGE value="Minor Update" />
+    <MESSAGE value="fixed checkout ui" />
+    <MESSAGE value="Minor change(fixed links) to index" />
+    <MESSAGE value="Minor change(fixed links) to routes" />
+    <MESSAGE value="Added express sessions" />
+    <MESSAGE value="Added dependencies" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added dependencies" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/routes/index.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/layout.hbs">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+  </component>
+</project>

@@ -6,6 +6,7 @@ const jwt = require('jsonwebtoken');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
+var nodemailer = require('nodemailer');
 
 
 var Product = require('../models/product');
@@ -18,7 +19,8 @@ var db=mongoose.connection;
 db.on('error', console.log.bind(console, "connection error")); 
 db.once('open', function(callback){ 
     console.log("Database connection succeeded"); 
-})
+});
+
 
 
 /* GET home page. */
@@ -117,7 +119,36 @@ router.post('/register', function(req,res){
           console.log("New user registered Successfully"); 
                 
       }); 
-             
+
+      let transport = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+                user: 'bolorundurovb@gmail.com',
+                pass: 'V@l1^nt_J'
+              }
+      });
+      let message = {
+        from: 'bolorundurovb@gmail.com',
+        to: email,
+        subject: 'Design Your Model S | Tesla',
+        html: '<h1>Have the most fun you can in a car!</h1><p>Get your <b>Tesla</b> today!</p>'
+    };
+      
+      transport.sendMail(message, function(error, info){
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
+        }
+      });
+      console.log(email);
+      var mailOptions = {
+        from: 'bolorundurovb@gmail.com',
+        to: 'f45ac69949-f965c2@inbox.mailtrap.io',
+        subject: 'Test Email',
+        html: '<h1>Welcome</h1><p>That was easy!</p>'
+      }
+      
      return res.render('./login', { message:'Registered Successfully. You can login now', success:'message'});
     });    
   }
