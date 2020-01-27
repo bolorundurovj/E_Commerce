@@ -34,9 +34,10 @@ router.get('/', (req, res, next) => {
             total += (cart[item].qty * cart[item].price);
         }
         displayCart.total = total;
+        console.log(total);
 
         //Render Cart
-      res.render('cart', { title: 'E-Commerce || Cart', email: req.cookies.email, cart: cart});//cart:displayCart
+      res.render('cart', { title: 'E-Commerce || Cart', email: req.cookies.email, cart: cart, cartTotal: total});//cart:displayCart
 });
 
 router.post('/:id', function (req, res) {
