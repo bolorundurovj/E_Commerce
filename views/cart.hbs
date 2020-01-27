@@ -30,16 +30,12 @@
 	</td>
 	<td> 
 		<select class="form-control">
-			<option value="{{this.qty}}">{{this.qty}}</option>
-			<option>1</option>
-			<option>2</option>	
-			<option>3</option>	
-			<option>4</option>	
+			<option>{{this.qty}}</option>	
 		</select> 
 	</td>
 	<td> 
 		<div class="price-wrap"> 
-			<var class="price">$1156.00</var> 
+			<var class="price">${{totalP this.price this.qty}}</var> 
 			<small class="text-muted">{{this.price}} each </small> 
 		</div> <!-- price-wrap .// -->
 	</td>
@@ -49,11 +45,9 @@
 	</td>
 </tr>
 {{/each}}
-{{/if}}
-
-{{#else}}
+{{else}}
 <h3>There are no items in your cart</h3>
-{{/else}}
+{{/if}}
 </tbody>
 </table>
 
@@ -88,7 +82,7 @@
 			<div class="card-body">
 					<dl class="dlist-align">
 					  <dt>Total price:</dt>
-					  <dd class="text-right">USD {{this.total}}</dd>
+					  <dd class="text-right">USD {{cart.total}}</dd>
 					</dl>
 					<dl class="dlist-align">
 					  <dt>Discount:</dt>
@@ -96,7 +90,7 @@
 					</dl>
 					<dl class="dlist-align">
 					  <dt>Total:</dt>
-					  <dd class="text-right  h5"><strong>${{this.total}}</strong></dd>
+					  <dd class="text-right  h5"><strong>${{cart.total}}</strong></dd>
 					</dl>
 					<hr>
 					<p class="text-center mb-3">
@@ -132,3 +126,5 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 </div><!-- container // -->
 </section>
 <!-- ========================= SECTION  END// ========================= -->
+
+
