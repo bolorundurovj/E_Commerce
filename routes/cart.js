@@ -37,7 +37,7 @@ router.get('/', (req, res, next) => {
         console.log(total);
 
         //Render Cart
-      res.render('cart', { title: 'E-Commerce || Cart', email: req.cookies.email, cart: cart, cartTotal: total});//cart:displayCart
+      res.render('cart', { title: 'E-Commerce || Cart', email: req.cookies.email, cart: cart, cartTotal: total});
 });
 
 router.post('/:id', function (req, res) {
