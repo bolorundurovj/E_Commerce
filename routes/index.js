@@ -63,6 +63,22 @@ router.get('/', function(req, res, next) {
 });
 });
 
+router.post('/search', function(req, res){
+  var title = req.body.search;
+  var collect = req.body.searchOptions;
+  console.log(collect);
+  stringCollect = String(collect);
+  db.collection(stringCollect).find({title: title }).toArray(function(err, searchResult){
+    if(err){
+      console.log(err);
+    }
+    else{
+      console.log(searchResult);
+      res.render(('grid-page'),{title: 'Results', searchResult: searchResult, });
+    }
+  })
+})
+
 router.post('/register', function(req,res){ 
   var firstName = req.body.firstName; 
   var lastName = req.body.lastName;

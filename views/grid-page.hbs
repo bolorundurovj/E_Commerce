@@ -96,12 +96,12 @@
 </header><!-- sect-heading -->
 
 <div class="row">
-	{{#each product}}
+	{{#each searchResult}}
     <div class="col-md-3">
 		<figure class="card card-product-grid">
 			<div class="img-wrap"> 
 				<span class="badge badge-danger"> NEW </span>
-				<img src="images/items/1.jpg">
+				<img src="{{this.imagePath}}">
 			</div> <!-- img-wrap.// -->
 			<figcaption class="info-wrap">
 					<a href="#" class="title mb-2">{{this.title}}</a>

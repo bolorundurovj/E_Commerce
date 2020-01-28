@@ -42,11 +42,12 @@
 				</a> <!-- brand-wrap.// -->
 			</div>
 			<div class="col-xl-6 col-lg-5 col-md-6">
-				<form action="/" class="search-header" method="POST">
+				<form action="/search" class="search-header" method="post" >
 					<div class="input-group w-100">
-						<select class="custom-select border-right" >
-								<option value="">All type</option><option value="codex">Special</option>
-								<option value="comments">Only best</option>
+						<select class="custom-select border-right" name="searchOptions">
+								<option value="products">All type</option>
+								<option value="codex">Special</option>
+								<option value="deals">Deals</option>
 								<option value="content">Latest</option>
 						</select>
 					    <input type="text" class="form-control" placeholder="Search" name="search" >
