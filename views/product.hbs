@@ -67,22 +67,25 @@
 </dl>
 
 	<div class="form-row  mt-4">
-		<form method="POST" class="btn btn-primary" action="/cart/{{product._id}}">>
+		<form method="POST"  action="/cart/{{product._id}}">
 		<div class="form-group col-md flex-grow-0">
 			<div class="input-group mb-3 input-spinner">
-			  <div class="input-group-prepend">
-			    <button class="btn btn-light" type="button" id="button-plus"> + </button>
-			  </div>
-			  <input type="text" class="form-control" value="1" name="quantity">
+			  
 			  <div class="input-group-append">
-			    <button class="btn btn-light" type="button" id="button-minus"> &minus; </button>
+			    <button class="btn btn-light" type="button" id="button-minus" onclick="decreaseValue()"> &minus; </button>
 			  </div>
+			  <input type="text" class="form-control" value="1" name="quantity" id="quantity">
+			  <div class="input-group-prepend">
+			    <button class="btn btn-light" type="button" id="button-plus" onclick="increaseValue()"> + </button>
+			  </div>
+			  
 			</div>
 		</div> <!-- col.// -->
 		<div class="form-group col-md">
 			
-			<i class="fas fa-shopping-cart"></i>
-				<input type="submit" value="Add To Cart" class="btn btn-primary">
+			
+			<button class="btn btn-primary" type="submit"><i class="fas fa-shopping-cart "></i>Add To Cart</button>
+			
 			
 			
 			<a href="#" class="btn btn-light">
@@ -221,4 +224,21 @@
 </div>
 </section>
 <!-- ========================= SECTION SUBSCRIBE END// ========================= -->
+<script>
+	function increaseValue(){
+		var value = parseInt(document.getElementById("quantity").value, 10);
+		value = isNaN(value) ? 0 : value;
+		value++;
+		document.getElementById("quantity").value = value;
+	}
+	
+	function decreaseValue(){
+		var value = parseInt(document.getElementById("quantity").value, 10);
+		value = isNaN(value) ? 0 : value;
+		value--;
+		document.getElementById("quantity").value = value;
+	}
+	
+	
+</script>
 
