@@ -53,7 +53,7 @@ router.get('/', function(req, res, next) {
               res.json(err);
    }
     else {
-      res.render('index', {title: 'E-Commerce', email: req.cookies.email, deal: dealChunk, clothes: productClothing, electronics:productElectronics});
+      res.render('index', {title: 'E-Commerce', email: req.cookies.email, deal: dealChunk, clothes: productClothing, electronics:productElectronics, namee: req.cookies.cc});
             console.log(dealChunk);
     }
   })
@@ -64,11 +64,11 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/search', function(req, res){
-  var title = req.body.search;
+  var category = req.body.search;
   var collect = req.body.searchOptions;
   console.log(collect);
   stringCollect = String(collect);
-  db.collection(stringCollect).find({title: title }).toArray(function(err, searchResult){
+  db.collection(stringCollect).find({category}).toArray(function(err, searchResult){
     if(err){
       console.log(err);
     }
@@ -184,6 +184,8 @@ router.post('/login', function(req,res){
     }
       else{
         // Load hash from your password DB.
+        console.log(user.firstName);
+        res.cookie('cc', user.firstName, {maxAge: 10000});
       bcrypt.compare(password, user.hashedPass, function(err, isMatch) {
         // res == true
         if(!isMatch){

@@ -77,17 +77,11 @@ db.collection("users").findOne({email: req.cookies.email}, function(err, docs){
  }
   else {
           res.render('profile', {title: 'E-Commerce || Profile', docs: docs, email: req.cookies.email });
+          
           console.log(docs);
   }
 });
 });
-
-router.get('/logout', (req, res) => {
-  req.logout();
-  //res.send({message:"You are now logged out", success:message});
-  res.redirect('/login');
-});
-
 
 
 module.exports = router;
