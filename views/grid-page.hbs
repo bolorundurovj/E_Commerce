@@ -10,8 +10,8 @@
 	<div class="col-md-2"> Your are here: </div> <!-- col.// -->
 	<nav class="col-md-8"> 
 	<ol class="breadcrumb">
-	    <li class="breadcrumb-item"><a href="#">Home</a></li>
-	    <li class="breadcrumb-item"><a href="#">Category name</a></li>
+	    <li class="breadcrumb-item"><a href="/">Home</a></li>
+	    <li class="breadcrumb-item"><a href="/{{this.stringCollect}}">{{this.stringCollect}}</a></li>
 	    <li class="breadcrumb-item"><a href="#">Sub category</a></li>
 	    <li class="breadcrumb-item active" aria-current="page">Items</li>
 	</ol>  
@@ -25,35 +25,35 @@
 		  <li class="list-inline-item mr-3 dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">   Supplier type </a>
             <div class="dropdown-menu p-3" style="max-width:400px;">	
 		      <label class="form-check">
-		      	 <input type="radio" name="myfilter" class="form-check-input"> Good supplier
+		      	 <input type="radio" name="myfilter" class="form-check-input disabled"> Good supplier
 		      </label>
 		      <label class="form-check">	
-		      	 <input type="radio" name="myfilter" class="form-check-input"> Best supplier
+		      	 <input type="radio" name="myfilter" class="form-check-input disabled"> Best supplier
 		      </label>
 		      <label class="form-check">
-		      	 <input type="radio" name="myfilter" class="form-check-input"> New supplier
+		      	 <input type="radio" name="myfilter" class="form-check-input disabled"> New supplier
 		      </label>
             </div> <!-- dropdown-menu.// -->
 	      </li>
 	      <li class="list-inline-item mr-3 dropdown">
 	      	<a href="#" class="dropdown-toggle" data-toggle="dropdown">  Country </a>
             <div class="dropdown-menu p-3">	
-		      <label class="form-check"> 	 <input type="checkbox" class="form-check-input"> China    </label>
-		      <label class="form-check">   	 <input type="checkbox" class="form-check-input"> Japan      </label>
-		      <label class="form-check">    <input type="checkbox" class="form-check-input"> Uzbekistan  </label>
-		      <label class="form-check">  <input type="checkbox" class="form-check-input"> Russia     </label>
+		      <label class="form-check"> 	 <input type="checkbox" class="form-check-inpu disabledt"> China    </label>
+		      <label class="form-check">   	 <input type="checkbox" class="form-check-input disabled"> Japan      </label>
+		      <label class="form-check">    <input type="checkbox" class="form-check-input disabled"> Uzbekistan  </label>
+		      <label class="form-check">  <input type="checkbox" class="form-check-input disabled"> Russia     </label>
             </div> <!-- dropdown-menu.// -->
 	      </li>
 		  <li class="list-inline-item mr-3 dropdown">
 		  	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Feature</a>
 		  	<div class="dropdown-menu">
-		  		<a href="#" class="dropdown-item">Anti backterial</a>
-		  		<a href="#" class="dropdown-item">With buttons</a>
-		  		<a href="#" class="dropdown-item">Extra safety</a>
+		  		<a href="#" class="dropdown-item disabled">Anti backterial</a>
+		  		<a href="#" class="dropdown-item disabled">With buttons</a>
+		  		<a href="#" class="dropdown-item disabled">Extra safety</a>
 		  	</div>
 		  </li>
-		  <li class="list-inline-item mr-3"><a href="#">Color</a></li>
-		  <li class="list-inline-item mr-3"><a href="#">Size</a></li>
+		  <li class="list-inline-item mr-3 disabled"><a href="#">Color</a></li>
+		  <li class="list-inline-item mr-3 disabled"><a href="#">Size</a></li>
 		  <li class="list-inline-item mr-3">
 		  	<div class="form-inline">
 		  		<label class="mr-2">Price</label>
