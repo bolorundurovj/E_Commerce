@@ -37,7 +37,7 @@ router.get('/', (req, res, next) => {
         console.log(total);
 
         //Render Cart
-      res.render('cart', { title: 'E-Commerce || Cart', email: req.cookies.email, cart: cart, cartTotal: total});
+      res.render('cart', { title: 'E-Commerce || Cart', email: req.cookies.email, cart: cart, cartTotal: total, namee: req.cookies.cc});
 });
 
 router.post('/:id', function (req, res) {
@@ -45,8 +45,10 @@ router.post('/:id', function (req, res) {
   req.session.cart = req.session.cart || {};
   var cart = req.session.cart;
   console.log(cart);
+  var test = req.params.id;
+  console.log(test);
   
-Product.findOne({_id:req.params.id}, function(err,product){
+Product.findOne({_id:test}, function(err,product){
    console.log(product);
       if(err){
           console.log(err);

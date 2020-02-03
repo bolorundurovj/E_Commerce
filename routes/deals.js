@@ -21,24 +21,10 @@ router.get('/:id', (req, res, next) => {
               res.json(err);
    }
     else {
-            res.render('deal', {title: 'E-Commerce || Deals&Offers', deal: docs, email: req.cookies.email });
+            res.render('deal', {title: 'E-Commerce || Deals&Offers', deal: docs, email: req.cookies.email, namee: req.cookies.cc});
             console.log(docs);
     }
   });
-});
-
-router.get('/add-to-cart/:id', function(req, res, next) {
-	var dealId = req.params.id;
-	var cart = new Cart(req.session.cart ? req.session.cart : {});
-
-	Product.findById(dealId, function(err, product){
-		if(err){
-			return res.redirect('/');
-		}
-		cart.add(product, product.id);
-		req.session.cart = cart;
-		res.redirect('/');
-	});
 });
 
 

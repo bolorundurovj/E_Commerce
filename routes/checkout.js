@@ -30,7 +30,7 @@ displayCart.total = total;
 
   var totalQty = totalQ;
 
-  res.render('checkout', { title: 'E-Commerce || Checkout', email: req.cookies.email, cart: cart, totalQty: totalQty, cartTotal: total });
+  res.render('checkout', { title: 'E-Commerce || Checkout', email: req.cookies.email, cart: cart, totalQty: totalQty, cartTotal: total, namee: req.cookies.cc});
   console.log(cart);
 });
 
