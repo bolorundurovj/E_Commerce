@@ -185,7 +185,7 @@ router.post('/login', function(req,res){
       else{
         // Load hash from your password DB.
         console.log(user.firstName);
-        res.cookie('cc', user.firstName, {maxAge: 100000});
+        res.cookie('cc', user.firstName, {maxAge: 180*60*1000});
       bcrypt.compare(password, user.hashedPass, function(err, isMatch) {
         // res == true
         if(!isMatch){
