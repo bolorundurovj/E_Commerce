@@ -159,8 +159,8 @@ router.post('/register', function(req,res){
       });
       console.log(email);
       var mailOptions = {
-        from: 'bolorundurovb@gmail.com',
-        to: 'f45ac69949-f965c2@inbox.mailtrap.io',
+        from: 'email@email.com',
+        to: 'id@inbox.mailtrap.io',
         subject: 'Test Email',
         html: '<h1>Welcome</h1><p>That was easy!</p>'
       }
