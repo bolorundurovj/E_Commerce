@@ -76,7 +76,7 @@ db.collection("users").findOne({email: req.cookies.email}, function(err, docs){
             res.json(err);
  }
   else {
-          res.render('profile', {title: 'E-Commerce || Profile', docs: docs, email: req.cookies.email, namee: req.cookies.cc });
+          res.render('profile', {title: 'E-Commerce || Profile', docs: docs, email: req.cookies.email, namee: req.cookies.cc, quant: req.cookies.quant});
           
           console.log(docs);
   }

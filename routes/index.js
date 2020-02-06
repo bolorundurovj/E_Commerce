@@ -67,8 +67,9 @@ router.post('/search', function(req, res){
   var category = req.body.search;
   var collect = req.body.searchOptions;
   console.log(collect);
+  console.log(category);
   stringCollect = String(collect);
-  db.collection(stringCollect).find({collect}).toArray(function(err, searchResult){
+  db.collection(stringCollect).find(category).toArray(function(err, searchResult){
     if(err){
       console.log(err);
     }

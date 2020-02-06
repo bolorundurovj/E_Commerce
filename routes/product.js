@@ -21,7 +21,7 @@ router.get('/:id', (req, res, next) => {
              console.log(err);
    }
     else {
-            res.render('product', {title: 'E-Commerce || Product', product: docs, email: req.cookies.email, namee: req.cookies.cc});
+            res.render('product', {title: 'E-Commerce || Product', product: docs, email: req.cookies.email, namee: req.cookies.cc, quant: req.cookies.quant});
             console.log(docs);
     }
   });
