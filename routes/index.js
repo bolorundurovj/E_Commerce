@@ -196,7 +196,7 @@ router.post('/login', function(req,res){
             jwt.sign({ email: email }, 'secretkey', { expiresIn: '3h'}, (err, token) => {
             res.cookie('token', token, {maxAge: 180*60*1000});
             res.cookie('email', email, {maxAge: 180*60*1000});
-            res.render(res.redirect('/'),{message:'Logged in successfully', success:'message', email: req.cookies.email});
+            res.render(res.redirect('/'),{message:'Logged in successfully', success:'message', email: req.cookies.email, quant: req.cookies.quant});
             //res.redirect('/');
            console.log('logged in successfully', token + email);
            //res.cookie('token', token, {maxAge: 100000 * 1000});
