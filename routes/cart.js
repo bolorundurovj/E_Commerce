@@ -35,10 +35,11 @@ router.get('/', (req, res, next) => {
         }
         displayCart.total = total;
         console.log(cart);
+        console.log(cart[item].qty);
 
         //Render Cart
-      res.render('cart', { title: 'E-Commerce || Cart', email: req.cookies.email, cart: cart, cartTotal: total, namee: req.cookies.cc});
-      res.cookie('quant', qty, {maxAge: 180*60*1000});
+      res.render('cart', { title: 'E-Commerce || Cart', email: req.cookies.email, cart: cart, cartTotal: total, namee: req.cookies.cc, quant: req.cookies.quant});
+     
 });
 
 router.post('/:id', function (req, res) {
@@ -69,6 +70,7 @@ Product.findOne({_id:test}, function(err,product){
           console.log(cart);
       }
       res.render('./cart', {cart: cart, message:'Added to cart successfully', success:'message'});
+      
       
       // res.redirect('/cart',);
   });
