@@ -27,20 +27,20 @@ router.get('/', (req, res, next) => {
   var cart = req.session.cart;
         var displayCart = {items:[], total:0}
         var total=0;
-        var totalQuantity = 0.0;
+        var totalQuantity = 0;
 
         //Get Total
         for(var item in cart){
             displayCart.items.push(cart[item]);
             total += (cart[item].qty * cart[item].price);
-            totalQuantity += Number(cart[item].qty);
+            //totalQuantity += Number(cart[item].qty);
         }
         displayCart.total = total;
         console.log(cart);
-        console.log(totalQuantity);
+        //console.log(totalQuantity);
 
         //Render Cart
-      res.cookie('quant', totalQuantity, {maxAge: 180*60*1000});
+      
       res.render('cart', { title: 'E-Commerce || Cart', email: req.cookies.email, cart: cart, cartTotal: total, namee: req.cookies.cc, quant: req.cookies.quant});
      
 });
@@ -72,8 +72,16 @@ Product.findOne({_id:test}, function(err,product){
           }
           console.log(cart);
       }
+
+      var totalQuantity = 0;
+      //Get Total
+      for(var item in cart){
+        totalQuantity += Number(cart[item].qty);
+    }
+    console.log(totalQuantity);
+    res.cookie('quant', totalQuantity, {maxAge: 180*60*1000});
       res.render('./cart', {cart: cart, message:'Added to cart successfully', success:'message'});
-      res.clearCookie('quant');
+      //res.clearCookie('quant');
       
       
       // res.redirect('/cart',);
