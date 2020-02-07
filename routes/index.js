@@ -75,6 +75,7 @@ router.post('/search', function(req, res){
     }
     else{
       console.log(searchResult);
+      res.cookie('search', searchResult);
       res.render(('grid-page'),{title: 'Results', searchResult: searchResult,stringCollect: stringCollect });
     }
   })
