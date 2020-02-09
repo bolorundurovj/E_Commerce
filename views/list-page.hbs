@@ -236,18 +236,19 @@
 	</div> <!-- row.// -->
 </article> <!-- card-product .// -->
 
-
+{{#each searchResult}}
 
 <article class="card card-product-list">
 	<div class="row no-gutters">
 		<aside class="col-md-3">
 			<a href="#" class="img-wrap">
-				<img src="images/items/2.jpg">
+				<span class="badge badge-danger"> NEW </span>
+				<img src="{{this.imagePath}}">
 			</a>
 		</aside> <!-- col.// -->
 		<div class="col-md-6">
 			<div class="info-main">
-				<a href="#" class="h5 title"> High Quality Winter PU Rain Jacket  </a>
+				<a href="#" class="h5 title"> {{this.title}}  </a>
 				<div class="rating-wrap mb-2">
 					<ul class="rating-stars">
 						<li style="width:80%" class="stars-active"> 
@@ -279,7 +280,7 @@
 		<aside class="col-sm-3">
 			<div class="info-aside">
 				<div class="price-wrap">
-					<span class="h5 price">$65.00-$70.00</span> 
+					<span class="h5 price">${{this.price}}</span> 
 					<small class="text-muted">/per item</small>
 				</div> <!-- price-wrap.// -->
 				<small class="text-success">Free shipping</small>
@@ -300,6 +301,8 @@
 		</aside> <!-- col.// -->
 	</div> <!-- row.// -->
 </article> <!-- card-product .// -->
+
+{{/each}}
 
 
 
