@@ -80,11 +80,11 @@ Product.findOne({_id:test}, function(err,product){
     }
     console.log(totalQuantity);
     res.cookie('quant', totalQuantity, {maxAge: 180*60*1000});
-      res.render('./cart', {cart: cart, message:'Added to cart successfully', success:'message'});
+      //res.render('./cart', {cart: cart, message:'Added to cart successfully', success:'message'});
       //res.clearCookie('quant');
       
       
-      // res.redirect('/cart',);
+    res.redirect('/cart');
   });
 });
 
