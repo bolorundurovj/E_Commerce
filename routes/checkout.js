@@ -4,6 +4,7 @@ var session = require('express-session');
 var MongoStore = require('connect-mongo')(session); 
 var mongoose = require('mongoose');
 var Handlebars = require('hbs');
+const jwt = require('jsonwebtoken');
 
 router.use(session({
   secret: 'secret',
