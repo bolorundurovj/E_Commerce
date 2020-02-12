@@ -13,9 +13,54 @@ router.use(session({
   cookie: { maxAge: 180*60*1000 }
 }));
 
+const checkToken = (req, res, next) => {
+  const header = req.headers['authorization'];
+
+ const heads = req.cookies.token;
+
+  if(typeof heads !== 'undefined') {
+      //const bearer = header.split(' ');
+      const token = heads;
+
+      req.token = token;
+      console.log(req.token);
+      next();
+  } else {
+      //If header is undefined return Forbidden (403)
+      res.render('./login', {message:'You need to log in'});
+  }
+}
+
 /* GET home page. */
-router.get('/', (req, res, next) => {
-  var cart = req.session.cart;
+router.get('/', checkToken, (req, res, next) => {
+  jwt.verify(req.token, 'secretkey', (err, res) => {
+    if(err){
+        //If error send Forbidden (403)
+        console.log('ERROR: Could not connect to the protected route');
+        
+  // error handler
+router.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // render the error page
+  res.status(err.status || 403);
+  res.render('error');
+});
+    } else {
+        //If token is successfully verified, we can send the autorized data 
+        console.log('Token verified');
+        
+    }
+  
+  
+  
+
+});
+
+
+var cart = req.session.cart;
   var displayCart = {items:[], total:0}
         var total=0;
         var totalQ=0;
