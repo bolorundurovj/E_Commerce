@@ -11,7 +11,7 @@ var MongoStore = require('connect-mongo')(session);
 
 // Connecting to Mongoose
 mongoose.connect('mongodb://localhost/ecommercestore');
-const db = mongoose.connection;
+//const db = mongoose.connection;
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -22,9 +22,10 @@ var cartRouter = require('./routes/cart');
 var profileRouter = require('./routes/profile');
 var checkoutRouter = require('./routes/checkout');
 var productRouter = require('./routes/product');
-var gridPageRouter = require('./routes/grid-page.js');
-var listPageRouter = require('./routes/list-page.js');
-var dealRouter = require('./routes/deals.js');
+var gridPageRouter = require('./routes/grid-page');
+var listPageRouter = require('./routes/list-page');
+var dealRouter = require('./routes/deals');
+var orderRouter = require('./routes/orders');
 
 
 var app = express();
@@ -51,6 +52,7 @@ app.use('/product', productRouter);
 app.use('/grid-page', gridPageRouter);
 app.use('/list-page', listPageRouter);
 app.use('/deal', dealRouter);
+app.use('/orders', orderRouter);
 
 app.use(session({
   secret: 'secret',
