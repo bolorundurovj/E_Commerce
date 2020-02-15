@@ -26,6 +26,7 @@ var gridPageRouter = require('./routes/grid-page');
 var listPageRouter = require('./routes/list-page');
 var dealRouter = require('./routes/deals');
 var orderRouter = require('./routes/orders');
+var clotheRouter = require('./routes/clothing');
 
 
 var app = express();
@@ -53,6 +54,7 @@ app.use('/grid-page', gridPageRouter);
 app.use('/list-page', listPageRouter);
 app.use('/deal', dealRouter);
 app.use('/orders', orderRouter);
+app.use('/clothing', clotheRouter);
 
 app.use(session({
   secret: 'secret',
