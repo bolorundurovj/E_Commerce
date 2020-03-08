@@ -27,6 +27,7 @@ var listPageRouter = require('./routes/list-page');
 var dealRouter = require('./routes/deals');
 var orderRouter = require('./routes/orders');
 var clotheRouter = require('./routes/clothing');
+var wishRouter = require('./routes/wishlist');
 
 
 var app = express();
@@ -55,6 +56,7 @@ app.use('/list-page', listPageRouter);
 app.use('/deal', dealRouter);
 app.use('/orders', orderRouter);
 app.use('/clothing', clotheRouter);
+app.use('/wishlist', wishRouter);
 
 app.use(session({
   secret: 'secret',
