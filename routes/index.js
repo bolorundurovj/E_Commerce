@@ -108,7 +108,7 @@ router.post('/register', function(req,res){
   else{
 
     //validation passed
-    User.findOne({ email: email })
+    User.findOne({ email: {$regex: email} })
     .then(user => {
       if(user) {
         res.render('./register', {
