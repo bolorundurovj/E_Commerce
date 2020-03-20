@@ -180,11 +180,7 @@ router.post('/login', function(req,res){
 
   User.findOne({ email: email })
     .then(user => {
-      if(!user) {
-        res.render('./login', { message:'User does not exist', data });
-        console.log('user does not exist')
-    }
-      else{
+      if(user) {
         // Load hash from your password DB.
         console.log(user.firstName);
         res.cookie('cc', user.firstName, {maxAge: 180*60*1000});
@@ -206,6 +202,11 @@ router.post('/login', function(req,res){
            
           }
       });
+        }
+      else{
+        console.log('user does not exist');
+      res.render('./login', { message:'User does not exist', data });
+      
       }
     })
 
