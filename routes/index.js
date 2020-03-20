@@ -205,7 +205,8 @@ router.post('/login', function(req,res){
         }
       else{
         console.log('user does not exist');
-      res.render('./login', { message:'User does not exist', data });
+      //res.render('/login', { message:'User does not exist', data });
+      res.redirect('/login?e='+ encodeURIComponent({message: 'Incorrect username or password'}));
       
       }
     })
