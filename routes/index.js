@@ -182,7 +182,7 @@ router.post('/login', function(req,res){
     .then(user => {
       if(!user) {
         res.render('./login', { message:'User does not exist', data });
-        console.log('user does not exist'); 
+        console.log('user does not exist')
     }
       else{
         // Load hash from your password DB.
