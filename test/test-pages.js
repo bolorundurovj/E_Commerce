@@ -5,6 +5,7 @@ describe("Url Check", () =>
 {
     it('Main page status', function(done) {
         request('http://localhost:3000' , function(error, response, body) {
+            console.log(response, body);
             expect(response.statusCode).to.equal(200);
             done();
         });
