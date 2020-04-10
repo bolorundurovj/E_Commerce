@@ -10,6 +10,7 @@ describe("Url Check", () => {
         .get('/')
         .end((err, res) => {
             expect(res.status).to.equal(200);
+            if (err) done(err);
             done();
         });
     });
