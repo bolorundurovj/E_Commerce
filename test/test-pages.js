@@ -2,7 +2,7 @@ var expect  = require('chai').expect;
 const supertest = require('supertest');
 const app = require('../app');
 
-const server = supertest.agent(app);
+const server = supertest(app);
 
 describe("Url Check", () => {
     it('Main page status', function(done) {
@@ -10,7 +10,7 @@ describe("Url Check", () => {
         server
         .get('/')
         .end((err, res) => {
-            expect(res.status).to.equal(200);
+            expect(200);
             if (err) done(err);
             done();
         });
