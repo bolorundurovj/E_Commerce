@@ -1,20 +1,23 @@
 var expect  = require('chai').expect;
-var request = require('request');
+const supertest = require('supertest');
+const app = require('../app');
 
-describe("Url Check", () =>
-{
+const server = supertest.agent(app);
+
+describe("Url Check", () => {
     it('Main page status', function(done) {
-        request('http://localhost:3000' , function(error, response, body) {
-            console.log(response, body);
-            expect(response.statusCode).to.equal(200);
+        server
+        .get('/')
+        .end((err, res) => {
+            expect(res.status).to.equal(200);
             done();
         });
     });
     
-    it('Profile page content', function(done) {
-        request('http://localhost:3000/profile' , function(error, response, body) {
-            expect(response.statusCode).to.equal(200);
-            done();
-        });
-    });
+    // it('Profile page content', function(done) {
+    //     request('http://localhost:3000/profile' , function(error, response, body) {
+    //         expect(response.statusCode).to.equal(200);
+    //         done();
+    //     });
+    // });
 });

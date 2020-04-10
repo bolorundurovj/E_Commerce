@@ -54,7 +54,7 @@ router.get('/', function(req, res, next) {
    }
     else {
       res.render('index', {title: 'E-Commerce', email: req.cookies.email, deal: dealChunk, clothes: productClothing, electronics:productElectronics, namee: req.cookies.cc, quant: req.cookies.quant});
-            console.log(dealChunk);
+            // console.log(dealChunk);
     }
   })
   }
