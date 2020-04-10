@@ -21,7 +21,9 @@
     "nodemailer": "^6.4.2"
   },
   "description": "A Full-Stack E-Commerce store with full features",
-  "devDependencies": {},
+  "devDependencies": {
+    "mocha": "^7.1.1"
+  },
   "keywords": [
     "Node.js",
     "Express",
