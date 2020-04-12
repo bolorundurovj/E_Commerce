@@ -5,3 +5,4 @@ node_js:
 - 10     # Explicitly include an active LTS version
 - 8
 before_script: chmod 0777 ./node_modules/.bin/mocha
+services: mongodb

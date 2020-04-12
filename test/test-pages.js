@@ -6,7 +6,7 @@ const server = supertest(app);
 
 describe("Url Check", () => {
     it('HomePage Status', function(done) {
-        this.timeout(1500000);
+        this.timeout(15000);
         server
         .get('/')
         .end((err, res) => {
