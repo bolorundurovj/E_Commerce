@@ -75,4 +75,18 @@ describe("Url Check", () => {
             done();
         });
     });
+    it('User Login Success', function(done) {
+        this.timeout(15000);
+        server
+        .post('/login')
+        .send({
+            email:"johndoe@gmail.com",
+            password:"johndoe"
+        })
+        .end((err, res) => {
+            expect(res.status).to.equal(302);
+            if (err) done(err);
+            done();
+        });
+    });
 });
