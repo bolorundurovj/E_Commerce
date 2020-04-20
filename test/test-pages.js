@@ -119,4 +119,14 @@ describe("Url Check", () => {
             done();
         });
     });
+    it('Get Checkout', function(done) {
+        this.timeout(15000);
+        server
+        .get('/checkout')
+        .end((err, res) => {
+            expect(res.status).to.equal(200);
+            if (err) done(err);
+            done();
+        });
+    });
 });
