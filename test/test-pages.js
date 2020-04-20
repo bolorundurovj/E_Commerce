@@ -89,10 +89,30 @@ describe("Url Check", () => {
             done();
         });
     });
-    it('Cart Status', function(done) {
+    it('Get Cart', function(done) {
         this.timeout(15000);
         server
         .get('/cart')
+        .end((err, res) => {
+            expect(res.status).to.equal(200);
+            if (err) done(err);
+            done();
+        });
+    });
+    it('Get Help', function(done) {
+        this.timeout(15000);
+        server
+        .get('/help')
+        .end((err, res) => {
+            expect(res.status).to.equal(200);
+            if (err) done(err);
+            done();
+        });
+    });
+    it('Get WishList', function(done) {
+        this.timeout(15000);
+        server
+        .get('/wishlist')
         .end((err, res) => {
             expect(res.status).to.equal(200);
             if (err) done(err);
