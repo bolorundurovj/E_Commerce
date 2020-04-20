@@ -89,4 +89,14 @@ describe("Url Check", () => {
             done();
         });
     });
+    it('Cart Status', function(done) {
+        this.timeout(15000);
+        server
+        .get('/cart')
+        .end((err, res) => {
+            expect(res.status).to.equal(200);
+            if (err) done(err);
+            done();
+        });
+    });
 });
