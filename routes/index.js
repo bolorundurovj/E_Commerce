@@ -8,7 +8,7 @@ var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 var nodemailer = require('nodemailer');
 var crypto = require("crypto");
-require('dotenv').config;
+require('dotenv').config();
 
 
 var Product = require('../models/product');
@@ -155,11 +155,14 @@ router.post('/register', function(req,res){
           if (err) { return res.status(500).send({ msg: err.message }); }
 
           // Send the email
+          const sengridu = process.env.SENDGRID_USERNAME;
+          const sengridp = process.env.SENDGRID_PASSWORD;
+          console.log(sengridp+ '' + sengridu);
           var transporter = nodemailer.createTransport({
              service: 'Sendgrid',
               auth: { 
-                user: 'bolorundurovb',
-                pass: 'valiant2000' }
+                user: sengridu,
+                pass: sengridp}
              });
           var mailOptions = { from: 'no-reply@yourwebapplication.com', to: user.email, subject: 'Account Verification Token', text: 'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttp:\/\/' + req.headers.host + '\/confirmation\/' + token.token + '.\n' };
           transporter.sendMail(mailOptions, function (err) {
