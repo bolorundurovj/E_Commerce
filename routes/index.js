@@ -7,17 +7,20 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 var nodemailer = require('nodemailer');
+var crypto = require("crypto");
+require('dotenv').config;
 
 
 var Product = require('../models/product');
 var Deal = require('../models/deals');
 var User = require('../models/user');
 var Cart = require('../models/cart');
+var Token = require('../models/token');
 
 //mongodb://admin:admin1234@ds014808.mlab.com:14808/ecommerceapp
 //mongodb://localhost:27017/ecommercestore
 
-mongoose.connect('mongodb://admin:admin1234@ds014808.mlab.com:14808/ecommerceapp'); 
+mongoose.connect('mongodb://localhost:27017/ecommercestore'); 
 var db=mongoose.connection; 
 db.on('error', console.log.bind(console, "connection error")); 
 db.once('open', function(callback){ 
@@ -118,60 +121,105 @@ router.post('/register', function(req,res){
           message:'Email already exists'
       });
     }
+    
     else{
       bcrypt.hash(password, null, null, function(err, hash) {
         // Store hash in your password DB
         var hashedPass = hash;
-        var data = { 
-          "firstName": firstName, 
-          "lastName": lastName,
-          "email":email, 
-          "password":password, 
-          "confirmPassword": confirmPassword,
-          "hashedPass": hashedPass,
-          "city": city,
-          "country":country,
-          "gender": gender,
-          "terms": terms
-    
-      } 
-    db.collection('users').insertOne(data,function(err, collection){ 
+        var user = new User(
+          { 
+            "firstName": firstName, 
+            "lastName": lastName,
+            "email":email, 
+            "password":password, 
+            "confirmPassword": confirmPassword,
+            "hashedPass": hashedPass,
+            "city": city,
+            "country":country,
+            "gender": gender,
+            "terms": terms,
+      
+        });
+
+        user.save((err) => {
           if (err) throw err; 
           console.log("New user registered Successfully"); 
-                
-      }); 
+        })
 
-      let transport = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-                user: 'email@gmail.com',
-                pass: 'password'
-              }
-      });
-      let message = {
-        from: 'email@gmail.com',
-        to: email,
-        subject: 'Design Your Model S | Tesla',
-        html: '<h1>Have the most fun you can in a car!</h1><p>Get your <b>Tesla</b> today!</p>'
-    };
+        console.log(user);
+      // Create a verification token for this user
+      var token = new Token({ _userId: user._id, token: crypto.randomBytes(16).toString('hex') });
+ 
+      // Save the verification token
+      token.save(function (err) {
+          if (err) { return res.status(500).send({ msg: err.message }); }
+
+          // Send the email
+          var transporter = nodemailer.createTransport({
+             service: 'Sendgrid',
+              auth: { 
+                user: 'bolorundurovb',
+                pass: 'valiant2000' }
+             });
+          var mailOptions = { from: 'no-reply@yourwebapplication.com', to: user.email, subject: 'Account Verification Token', text: 'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttp:\/\/' + req.headers.host + '\/confirmation\/' + token.token + '.\n' };
+          transporter.sendMail(mailOptions, function (err) {
+              if (err) { return res.status(500).send({ msg: err.message }); }
+              res.status(200).send('A verification email has been sent to ' + user.email + '.');
+          });
+        });  
+        
+    //     var data = { 
+    //       "firstName": firstName, 
+    //       "lastName": lastName,
+    //       "email":email, 
+    //       "password":password, 
+    //       "confirmPassword": confirmPassword,
+    //       "hashedPass": hashedPass,
+    //       "city": city,
+    //       "country":country,
+    //       "gender": gender,
+    //       "terms": terms,
+    
+    //   } 
+    // db.collection('users').insertOne(data,function(err, collection){ 
+    //       if (err) throw err; 
+    //       console.log("New user registered Successfully"); 
+                
+    //   }); 
       
-      transport.sendMail(message, function(error, info){
-        if (error) {
-          console.log(error);
-        } else {
-          console.log('Email sent: ' + info.response);
-        }
-      });
-      console.log(email);
-      var mailOptions = {
-        from: 'email@email.com',
-        to: 'id@inbox.mailtrap.io',
-        subject: 'Test Email',
-        html: '<h1>Welcome</h1><p>That was easy!</p>'
-      }
+
+    //   let transport = nodemailer.createTransport({
+    //     service: 'gmail',
+    //     auth: {
+    //             user: 'email@gmail.com',
+    //             pass: 'password'
+    //           }
+    //   });
+    //   let message = {
+    //     from: 'email@gmail.com',
+    //     to: email,
+    //     subject: 'Design Your Model S | Tesla',
+    //     html: '<h1>Have the most fun you can in a car!</h1><p>Get your <b>Tesla</b> today!</p>'
+    // };
       
-     return res.render('./login', { message:'Registered Successfully. You can login now', success:'message'});
-    });    
+    //   transport.sendMail(message, function(error, info){
+    //     if (error) {
+    //       console.log(error);
+    //     } else {
+    //       console.log('Email sent: ' + info.response);
+    //     }
+    //   });
+    //   console.log(email);
+    //   var mailOptions = {
+    //     from: 'email@email.com',
+    //     to: 'id@inbox.mailtrap.io',
+    //     subject: 'Test Email',
+    //     html: '<h1>Welcome</h1><p>That was easy!</p>'
+    //   }
+      
+     //return res.render('./login', { message:'Registered Successfully. You can login now', success:'message'});
+    });  
+    
   }
   });
   }
@@ -184,7 +232,8 @@ router.post('/login', function(req,res){
   User.findOne({ email: email })
     .then(user => {
       if(user) {
-        // Load hash from your password DB.
+        if(user.isVerified){
+          // Load hash from your password DB.
         console.log(user.firstName);
         res.cookie('cc', user.firstName, {maxAge: 180*60*1000});
       bcrypt.compare(password, user.hashedPass, function(err, isMatch) {
@@ -197,14 +246,17 @@ router.post('/login', function(req,res){
             jwt.sign({ email: email }, 'secretkey', { expiresIn: '3h'}, (err, token) => {
             res.cookie('token', token, {maxAge: 180*60*1000});
             res.cookie('email', email, {maxAge: 180*60*1000});
-            res.render(res.redirect('/'),{message:'Logged in successfully', success:'message', email: req.cookies.email, quant: req.cookies.quant});
-            //res.redirect('/');
+            //res.render(res.redirect('/'),{token: generateToken(user),message:'Logged in successfully', success:'message', email: req.cookies.email, quant: req.cookies.quant});
+            res.redirect('/');
            console.log('logged in successfully', token + email);
            //res.cookie('token', token, {maxAge: 100000 * 1000});
            });
            
           }
       });
+        }else{
+        console.log('user is not verified')};
+        res.redirect('/login?e='+ encodeURIComponent({message: 'You need to verify your account to login. Please check your email'}));
         }
       else{
         console.log('user does not exist');
@@ -216,6 +268,56 @@ router.post('/login', function(req,res){
 
     
 })
+
+router.get('/confirmation/:token', (req, res, next) => {
+  res.render('confirmation', { title: 'E-Commerce || Confirm', token: req.params.token});
+  console.log(req.params.token);
+});
+
+router.post('/confirmation', (req, res, next) =>{
+  // req.assert('email', 'Email is not valid').isEmail();
+  // req.assert('email', 'Email cannot be blank').notEmpty();
+  // req.assert('token', 'Token cannot be blank').notEmpty();
+  // req.sanitize('email').normalizeEmail({ remove_dots: false });
+
+  var email = req.body.email;
+  var token = req.body.token;
+
+  console.log(token);
+
+  if(!email)
+  {
+    res. send({message:'User doesn\'t exist'})
+  }
+  if(!token)
+  {
+    res. send({message:'Token doesn\'t exist or may have expired'})
+  }
+  else
+  {
+    // Find a matching token
+  Token.findOne({ token: req.body.token }, function (err, token) {
+    if (!token) return res.status(400).send({ msg: 'We were unable to find a valid token. Your token may have expired.' });
+
+    // If we found a token, find a matching user
+    User.findOne({ _id: token._userId, email: req.body.email }, function (err, user) {
+        if (!user) return res.status(400).send({ msg: 'We were unable to find a user for this token.' });
+        if (user.isVerified) return res.status(400).send({ msg: 'This user has already been verified.' });
+
+        // Verify and save the user
+        user.isVerified = true;
+        user.save(function (err) {
+            if (err) { return res.status(500).send({ msg: err.message }); }
+            res.status(200).send("The account has been verified. Please log in.");
+        });
+    });
+});
+}
+});
+
+router.post('/resend', () => {
+
+});
 
 /* router.post('/search', function(req,res){ 
   var search = req.body.search; 
@@ -243,6 +345,8 @@ router.get('/logout', (req, res) => {
   res.clearCookie('email');
   res.render('index', {message:"You are now logged out", success:'message'});
 });
+
+
 
 
 module.exports = router;

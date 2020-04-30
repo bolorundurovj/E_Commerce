@@ -10,7 +10,10 @@ var userSchema = new Schema({
     lastName: {type: String, required:true},
     password: {type: String, required:true},
     confirmPassword: {type: String, required:true},
+    isVerified:{type:Boolean, default:false},
     hashedPass:{type:String},
+    passwordResetToken: String,
+    passwordResetExpires: Date,
     date: { type: Date, default: Date.now}
 });
 

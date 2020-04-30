@@ -10,7 +10,7 @@ var MongoStore = require('connect-mongo')(session);
 
 
 // Connecting to Mongoose
-mongoose.connect('mongodb://localhost/ecommercestore');
+mongoose.connect('mongodb://localhost:27017/ecommercestore');
 //const db = mongoose.connection;
 
 var indexRouter = require('./routes/index');
