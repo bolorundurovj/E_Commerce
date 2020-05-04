@@ -150,7 +150,7 @@ router.post('/register', function(req,res){
           var mailOptions = { from: 'no-reply@yourwebapplication.com', to: user.email, subject: 'Account Verification Token', text: 'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttp:\/\/' + req.headers.host + '\/confirmation\/' + token.token + '.\n' };
           transporter.sendMail(mailOptions, function (err) {
               if (err) { return res.status(500).send({ msg: err.message }); }
-              res.status(200).send('A verification email has been sent to ' + user.email + '.');
+              res.status(200).render('./register', {message:'A verification email has been sent to ' + user.email + '.'});
           });
         }); 
 
@@ -240,6 +240,7 @@ router.post('/login', function(req,res){
                 jwt.sign({ email: email }, 'secretkey', { expiresIn: '3h'}, (err, token) => {
                   res.cookie('token', token, {maxAge: 180*60*1000});
                   res.cookie('email', email, {maxAge: 180*60*1000});
+                  //res.send({message:'Logged in successfully', success:'message'});
                   //res.render(res.redirect('/'),{token: generateToken(user),message:'Logged in successfully', success:'message', email: req.cookies.email, quant: req.cookies.quant});
                   res.redirect('/');
                   console.log('logged in successfully', token + email);
