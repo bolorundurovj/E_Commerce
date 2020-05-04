@@ -34,29 +34,30 @@ db.once('open', function(callback){
 router.get('/', function(req, res, next) {
   db.collection('products').find({category:"electronics"}).toArray( function(err, productElectronics){
     if(err) {
-              res.json(err);
-   }
-    else {
-  db.collection('products').find({category:"clothing"}).toArray( function(err, productClothing){
-    if(err) {
-              res.json(err);
-   }
-    else {
-  db.collection('deals').find().toArray( function(err, dealChunk){
-    if(err) {
-              res.json(err);
-   }
-    else {
-      res.render('index', {title: 'E-Commerce', email: req.cookies.email, deal: dealChunk, clothes: productClothing, electronics:productElectronics, namee: req.cookies.cc, quant: req.cookies.quant});
-            // console.log(dealChunk);
+      res.json(err);
     }
-  })
-  }
+    else {
+      db.collection('products').find({category:"clothing"}).toArray( function(err, productClothing){
+        if(err) {
+          res.json(err);
+        }
+        else {
+          db.collection('deals').find().toArray( function(err, dealChunk){
+            if(err) {
+              res.json(err);
+            }
+            else {
+              res.render('index', {title: 'E-Commerce', email: req.cookies.email, deal: dealChunk, clothes: productClothing, electronics:productElectronics, namee: req.cookies.cc, quant: req.cookies.quant});
+                // console.log(dealChunk);
+            }
+          })
+        }
+      });
+    }
   });
-}
-});
 });
 
+//Search
 router.post('/search', function(req, res){
   var category = req.body.search;
   var collect = req.body.searchOptions;
@@ -129,13 +130,7 @@ router.post('/register', function(req,res){
       
         });
 
-        user.save((err) => {
-          if (err) throw err; 
-          console.log("New user registered Successfully"); 
-        })
-
-        console.log(user);
-      // Create a verification token for this user
+        // Create a verification token for this user
       var token = new Token({ _userId: user._id, token: crypto.randomBytes(16).toString('hex') });
  
       // Save the verification token
@@ -157,7 +152,15 @@ router.post('/register', function(req,res){
               if (err) { return res.status(500).send({ msg: err.message }); }
               res.status(200).send('A verification email has been sent to ' + user.email + '.');
           });
-        });  
+        }); 
+
+        user.save((err) => {
+          if (err) throw err; 
+          console.log("New user registered Successfully"); 
+        })
+
+        console.log(user);
+       
         
     //     var data = { 
     //       "firstName": firstName, 
@@ -225,39 +228,36 @@ router.post('/login', function(req,res){
       if(user) {
         if(user.isVerified){
           // Load hash from your password DB.
-        console.log(user.firstName);
-        res.cookie('cc', user.firstName, {maxAge: 180*60*1000});
-      bcrypt.compare(password, user.hashedPass, function(err, isMatch) {
-        // res == true
-        if(!isMatch){
-        res.render('./login', {message:'Password is incorrect', });
-        console.log('incorrect password');
+          console.log(user.firstName);
+          res.cookie('cc', user.firstName, {maxAge: 180*60*1000});
+          bcrypt.compare(password, user.hashedPass, function(err, isMatch) {
+            // res == true
+            if(!isMatch){
+              res.render('./login', {message:'Password is incorrect', });
+              console.log('incorrect password');
+            }
+            if(isMatch){
+                jwt.sign({ email: email }, 'secretkey', { expiresIn: '3h'}, (err, token) => {
+                  res.cookie('token', token, {maxAge: 180*60*1000});
+                  res.cookie('email', email, {maxAge: 180*60*1000});
+                  //res.render(res.redirect('/'),{token: generateToken(user),message:'Logged in successfully', success:'message', email: req.cookies.email, quant: req.cookies.quant});
+                  res.redirect('/');
+                  console.log('logged in successfully', token + email);
+                });              
+              }
+          });
         }
-        if(isMatch){
-            jwt.sign({ email: email }, 'secretkey', { expiresIn: '3h'}, (err, token) => {
-            res.cookie('token', token, {maxAge: 180*60*1000});
-            res.cookie('email', email, {maxAge: 180*60*1000});
-            //res.render(res.redirect('/'),{token: generateToken(user),message:'Logged in successfully', success:'message', email: req.cookies.email, quant: req.cookies.quant});
-            res.redirect('/');
-           console.log('logged in successfully', token + email);
-           //res.cookie('token', token, {maxAge: 100000 * 1000});
-           });
-           
-          }
-      });
-        }else{
-        console.log('user is not verified')};
-        res.redirect('/login?e='+ encodeURIComponent({message: 'You need to verify your account to login. Please check your email'}));
-        }
+        else{
+          console.log('user is not verified');
+          res.redirect('/login?e='+ encodeURIComponent({message: 'You need to verify your account to login. Please check your email'}));
+        };        
+      }
       else{
         console.log('user does not exist');
-      //res.render('/login', { message:'User does not exist', data });
-      res.redirect('/login?e='+ encodeURIComponent({message: 'Incorrect username or password'}));
-      
+        //res.render('/login', { message:'User does not exist', data });
+        res.redirect('/login?e='+ encodeURIComponent({message: 'Incorrect username or password'}));      
       }
-    })
-
-    
+    })    
 })
 
 router.get('/confirmation/:token', (req, res, next) => {
@@ -309,26 +309,6 @@ router.post('/confirmation', (req, res, next) =>{
 router.post('/resend', () => {
 
 });
-
-/* router.post('/search', function(req,res){ 
-  var search = req.body.search; 
-  
-
-  if(!search) {
-    res.render('/', {message:'Please fill the searchbar'});
-  }
-  else{
-    db.collection('products').find({title: search}).toArray( function(err, productChunk){
-      if(err) {
-                res.json(err);
-     }
-      else {
-        res.render('./grid-page', { email: req.cookies.email, product: productChunk});
-              console.log(productChunk);
-      }
-    });
-}
-}); */
 
 router.get('/logout', (req, res) => {
   //req.logout();
