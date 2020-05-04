@@ -150,7 +150,7 @@ router.post('/register', function(req,res){
           var mailOptions = { from: 'no-reply@yourwebapplication.com', to: user.email, subject: 'Account Verification Token', text: 'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttp:\/\/' + req.headers.host + '\/confirmation\/' + token.token + '.\n' };
           transporter.sendMail(mailOptions, function (err) {
               if (err) { return res.status(500).send({ msg: err.message }); }
-              res.status(200).render('./register', {message:'A verification email has been sent to ' + user.email + '.'});
+              res.status(200).render('./confirmation', {message:'A verification email has been sent to ' + user.email + '.', success: message});
           });
         }); 
 
