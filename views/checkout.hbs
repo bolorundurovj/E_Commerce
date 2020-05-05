@@ -1,122 +1,133 @@
 <section class="section-content padding-y">
-<div class="container">
+	<div class="container">
 
-<div class="row">
-	<main class="col-md-9">
-<!-- ============================ COMPONENT 3  ================================= -->
-<output id="code_cart_review">
-<div class="card">
-	<article class="card-body">
-		<header class="mb-4">
-			<h4 class="card-title">Review cart</h4>
-		</header>
-			<div class="row">
-				{{#each cart}}
-				<div class="col-md-6">
-					<figure class="itemside  mb-3">
-						<div class="aside"><img src="{{this.imagePath}}" class="border img-xs"></div>
-						<figcaption class="info">
-							<p>{{this.title}} </p>
-							<span>{{this.qty}} x ${{this.price}} = Total: ${{totalP this.price this.qty}} </span>
-						</figcaption>
-					</figure>
-				</div> <!-- col.// -->
-				{{/each}}
-				
-			</div> <!-- row.// -->
-	</article> <!-- card-body.// -->
-	<article class="card-body border-top">
+		<div class="row">
+			<main class="col-md-9">
+				<!-- ============================ COMPONENT 3  ================================= -->
+				<output id="code_cart_review">
+					<div class="card">
+						<article class="card-body">
+							<header class="mb-4">
+								<h4 class="card-title">Review cart</h4>
+							</header>
+							<div class="row">
+								{{#each cart}}
+								<div class="col-md-6">
+									<figure class="itemside  mb-3">
+										<div class="aside"><img src="{{this.imagePath}}" class="border img-xs"></div>
+										<figcaption class="info">
+											<p>{{this.title}} </p>
+											<span>{{this.qty}} x ${{this.price}} = Total:
+												${{totalP this.price this.qty}} </span>
+										</figcaption>
+									</figure>
+								</div> <!-- col.// -->
+								{{/each}}
 
-		<dl class="row">
-		  <dt class="col-sm-10">Subtotal: <span class="float-right text-muted">{{totalQty}} items</span></dt>
-		  <dd class="col-sm-2 text-right"><strong>${{cartTotal}}</strong></dd>
+							</div> <!-- row.// -->
+						</article> <!-- card-body.// -->
+						<article class="card-body border-top">
 
-		  <dt class="col-sm-10">Discount: <span class="float-right text-muted">10% offer</span></dt>
-		  <dd class="col-sm-2 text-danger text-right"><strong>$29</strong></dd>
+							<dl class="row">
+								<dt class="col-sm-10">Subtotal: <span class="float-right text-muted">{{totalQty}}
+										items</span></dt>
+								<dd class="col-sm-2 text-right"><strong>${{cartTotal}}</strong></dd>
 
-		  <dt class="col-sm-10">Delivery charge: <span class="float-right text-muted">Express delivery</span></dt>
-		  <dd class="col-sm-2 text-right"><strong>$120</strong></dd>
+								<dt class="col-sm-10">Discount: <span class="float-right text-muted">10% offer</span>
+								</dt>
+								<dd class="col-sm-2 text-danger text-right"><strong>$29</strong></dd>
 
-		  <dt class="col-sm-10">Tax: <span class="float-right text-muted">5%</span></dt>
-		  <dd class="col-sm-2 text-right text-success"><strong>$7</strong></dd>
+								<dt class="col-sm-10">Delivery charge: <span class="float-right text-muted">Express
+										delivery</span></dt>
+								<dd class="col-sm-2 text-right"><strong>$120</strong></dd>
 
-		  <dt class="col-sm-10">Total:</dt>
-		  <dd class="col-sm-2 text-right"><strong class="h5 text-dark">${{cartTotal}}</strong></dd>
-		</dl>
+								<dt class="col-sm-10">Tax: <span class="float-right text-muted">5%</span></dt>
+								<dd class="col-sm-2 text-right text-success"><strong>$7</strong></dd>
 
-	</article> <!-- card-body.// -->
-</div>
-</output>
-<!-- ============================ COMPONENT 3  ================================= -->
+								<dt class="col-sm-10">Total:</dt>
+								<dd class="col-sm-2 text-right"><strong class="h5 text-dark">${{cartTotal}}</strong>
+								</dd>
+							</dl>
 
-	</main> <!-- col.// -->
+						</article> <!-- card-body.// -->
+					</div>
+				</output>
+				<!-- ============================ COMPONENT 3  ================================= -->
+
+			</main> <!-- col.// -->
 
 
-<!-- ========================= SECTION CONTENT ========================= -->
-<aside class="col-md-3">
-<div class="card mx-auto" style="max-width: 380px;">
-    <output>
-<div class="card">
-      <div class="card-body">
-      <h4 class="card-title mb-4">Payment</h4>
-<form role="form" action="/orders" method="POST">
-<div class="form-group">
-<label for="username">Name on card</label>
-<input type="text" class="form-control" name="username" placeholder="Ex. John Smith" required="">
-</div> <!-- form-group.// -->
+			<!-- ========================= SECTION CONTENT ========================= -->
+			<aside class="col-md-3">
+				<div class="card mx-auto" style="max-width: 380px;">
+					<output>
+						<div class="card">
+							<div class="card-body">
+								<h4 class="card-title mb-4">Payment</h4>
+								<form role="form" action="/orders" method="POST">
+									<div class="form-group">
+										<label for="username">Name on card</label>
+										<input type="text" class="form-control" name="username"
+											placeholder="Ex. John Smith" required="">
+									</div> <!-- form-group.// -->
 
-<div class="form-group">
-<label for="cardNumber">Card number</label>
-<div class="input-group">
-	<input type="text" class="form-control" name="cardNumber" placeholder="">
-	<div class="input-group-append">
-		<span class="input-group-text">
-			<i class="fab fa-cc-visa"></i> &nbsp; <i class="fab fa-cc-amex"></i> &nbsp; 
-			<i class="fab fa-cc-mastercard"></i> 
-		</span>
+									<div class="form-group">
+										<label for="cardNumber">Card number</label>
+										<div class="input-group">
+											<input type="text" class="form-control" name="cardNumber" placeholder="">
+											<div class="input-group-append">
+												<span class="input-group-text">
+													<i class="fab fa-cc-visa"></i> &nbsp; <i class="fab fa-cc-amex"></i>
+													&nbsp;
+													<i class="fab fa-cc-mastercard"></i>
+												</span>
+											</div>
+										</div> <!-- input-group.// -->
+									</div> <!-- form-group.// -->
+
+									<div class="row">
+										<div class="col-md flex-grow-0">
+											<div class="form-group">
+												<label><span class="hidden-xs">Expiration</span> </label>
+												<div class="form-inline" style="min-width: 220px">
+													<select class="form-control" style="width:100px">
+														<option>MM</option>
+														<option>01 - Janiary</option>
+														<option>02 - February</option>
+														<option>03 - February</option>
+													</select>
+													<span style="width:20px; text-align: center"> / </span>
+													<select class="form-control" style="width:100px">
+														<option>YY</option>
+														<option>2018</option>
+														<option>2019</option>
+													</select>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group">
+												<label data-toggle="tooltip" title=""
+													data-original-title="3 digits code on back side of the card">CVV <i
+														class="fa fa-question-circle"></i></label>
+												<input class="form-control" required="" type="text">
+											</div> <!-- form-group.// -->
+										</div>
+									</div> <!-- row.// -->
+
+									<p class="alert alert-success"> <i class="fa fa-lock"></i> Some secureity
+										information Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+										eiusmod</p>
+									<button class="subscribe btn btn-primary btn-block" type="button"> Confirm </button>
+								</form>
+							</div> <!-- card-body.// -->
+						</div> <!-- card .// -->
+					</output>
+				</div>
+			</aside>
+			<!-- row.// -->
+
+		</div>
+
 	</div>
-</div> <!-- input-group.// -->
-</div> <!-- form-group.// -->
-
-<div class="row">
-    <div class="col-md flex-grow-0">
-        <div class="form-group">
-            <label><span class="hidden-xs">Expiration</span> </label>
-        	<div class="form-inline" style="min-width: 220px">
-        		<select class="form-control" style="width:100px">
-				  <option>MM</option>
-				  <option>01 - Janiary</option>
-				  <option>02 - February</option>
-				  <option>03 - February</option>
-				</select>
-	            <span style="width:20px; text-align: center"> / </span>
-	            <select class="form-control" style="width:100px">
-				  <option>YY</option>
-				  <option>2018</option>
-				  <option>2019</option>
-				</select>
-        	</div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="form-group">
-            <label data-toggle="tooltip" title="" data-original-title="3 digits code on back side of the card">CVV <i class="fa fa-question-circle"></i></label>
-            <input class="form-control" required="" type="text">
-        </div> <!-- form-group.// -->
-    </div>
-</div> <!-- row.// -->
-
-<p class="alert alert-success"> <i class="fa fa-lock"></i> Some secureity information Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</p>
-<button class="subscribe btn btn-primary btn-block" type="button"> Confirm  </button>
-</form>
-      </div> <!-- card-body.// -->
-    </div> <!-- card .// -->
-</output>
-</div>
-</aside>
- <!-- row.// -->
-
-</div>
-
-</div>
 </section>
