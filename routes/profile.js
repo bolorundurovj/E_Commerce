@@ -59,12 +59,6 @@ router.get("/", checkToken, (req, res, next) => {
     }
   });
 
-  /*db.collection("users").findOne({email:req.body.email}, function(err, result) {
-  if (err) throw err;
-  console.log(result);
-  //db.close();
-  console.log("db closed");
-});*/
 
   db.collection("users").findOne({ email: req.cookies.email }, function (
     err,
