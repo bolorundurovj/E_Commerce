@@ -7,9 +7,10 @@ const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 var session = require("express-session");
 var MongoStore = require("connect-mongo")(session);
+require('dotenv').config();
 
 // Connecting to Mongoose
-mongoose.connect("mongodb://localhost:27017/ecommercestore");
+mongoose.connect(process.env.DB_DEV);
 //const db = mongoose.connection;
 
 var indexRouter = require("./routes/index");
