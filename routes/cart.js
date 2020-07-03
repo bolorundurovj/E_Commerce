@@ -8,9 +8,6 @@ var Handlebars = require("hbs");
 var Product = require("../models/product");
 var Deal = require("../models/deals");
 
-//mongodb://admin:admin1234@ds014808.mlab.com:14808/ecommerceapp
-//mongodb://localhost:27017/ecommercestore
-
 mongoose.connect(process.env.DB_DEV);
 var db = mongoose.connection;
 db.on("error", console.log.bind(console, "connection error"));

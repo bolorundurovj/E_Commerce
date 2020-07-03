@@ -11,7 +11,6 @@ require('dotenv').config();
 
 // Connecting to Mongoose
 mongoose.connect(process.env.DB_DEV);
-//const db = mongoose.connection;
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
