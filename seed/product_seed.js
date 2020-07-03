@@ -1,9 +1,12 @@
+require('dotenv').config({path: '../.env'});
+
 var Product = require("../models/product");
 
 var mongoose = require("mongoose");
 
-mongoose.connect("localhost:27017/ecommercestore/products");
+mongoose.connect(process.env.DB_DEV);
 var db = mongoose.connection;
+
 db.on("error", console.log.bind(console, "connection error"));
 db.once("open", function (callback) {
   console.log("Database connection succeeded for product seeder");
@@ -44,7 +47,8 @@ var products = [
   }),
 ];
 
-for (var i = 0, done = 0; i < products.length; i++) {
+var done = 1;
+for (var i = 0; i < products.length; i++) {
   products[i].save(function (err, result) {
     done++;
     if (done == products.length) mongoose.disconnect();
