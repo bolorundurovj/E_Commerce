@@ -10,7 +10,10 @@ var MongoStore = require("connect-mongo")(session);
 require('dotenv').config();
 
 // Connecting to Mongoose
-mongoose.connect(process.env.DB_DEV);
+mongoose.connect(process.env.DB_DEV, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
