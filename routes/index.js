@@ -18,7 +18,7 @@ var User = require("../models/user");
 var Cart = require("../models/cart");
 var Token = require("../models/token");
 
-mongoose.connect(process.env.DB_DEV);
+mongoose.connect(`${process.env.DB_PROD}`);
 var db = mongoose.connection;
 db.on("error", console.log.bind(console, "connection error"));
 db.once("open", function (callback) {
