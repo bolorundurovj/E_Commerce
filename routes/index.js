@@ -72,7 +72,7 @@ router.post("/search", function (req, res) {
   console.log(category);
   stringCollect = String(collect);
   db.collection(stringCollect)
-    .find({ title: category.toUpperCase() })
+    .find({ title: {$regex: new RegExp("^" + category, "i")} })
     .toArray(function (err, searchResult) {
       if (err) {
         console.log(err);

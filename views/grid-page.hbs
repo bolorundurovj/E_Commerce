@@ -2,93 +2,9 @@
 <section class="section-content padding-y">
 	<div class="container">
 
-
-		<!-- ============================  FILTER TOP  ================================= -->
-		<div class="card mb-3">
-			<div class="card-body">
-				<div class="row">
-					<div class="col-md-2"> Your are here: </div> <!-- col.// -->
-					<nav class="col-md-8">
-						<ol class="breadcrumb">
-							<li class="breadcrumb-item"><a href="/">Home</a></li>
-							<li class="breadcrumb-item"><a href="/{{this.stringCollect}}">{{this.stringCollect}}</a>
-							</li>
-							<li class="breadcrumb-item"><a href="#">Sub category</a></li>
-							<li class="breadcrumb-item active" aria-current="page">Items</li>
-						</ol>
-					</nav> <!-- col.// -->
-				</div> <!-- row.// -->
-				<hr>
-				<div class="row">
-					<div class="col-md-2">Filter by</div> <!-- col.// -->
-					<div class="col-md-10">
-						<ul class="list-inline">
-							<li class="list-inline-item mr-3 dropdown"><a href="#" class="dropdown-toggle"
-									data-toggle="dropdown"> Supplier type </a>
-								<div class="dropdown-menu p-3" style="max-width:400px;">
-									<label class="form-check">
-										<input type="radio" name="myfilter" class="form-check-input disabled"> Good
-										supplier
-									</label>
-									<label class="form-check">
-										<input type="radio" name="myfilter" class="form-check-input disabled"> Best
-										supplier
-									</label>
-									<label class="form-check">
-										<input type="radio" name="myfilter" class="form-check-input disabled"> New
-										supplier
-									</label>
-								</div> <!-- dropdown-menu.// -->
-							</li>
-							<li class="list-inline-item mr-3 dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown"> Country </a>
-								<div class="dropdown-menu p-3">
-									<label class="form-check"> <input type="checkbox" class="form-check-inpu disabledt">
-										China </label>
-									<label class="form-check"> <input type="checkbox" class="form-check-input disabled">
-										Japan </label>
-									<label class="form-check"> <input type="checkbox" class="form-check-input disabled">
-										Uzbekistan </label>
-									<label class="form-check"> <input type="checkbox" class="form-check-input disabled">
-										Russia </label>
-								</div> <!-- dropdown-menu.// -->
-							</li>
-							<li class="list-inline-item mr-3 dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Feature</a>
-								<div class="dropdown-menu">
-									<a href="#" class="dropdown-item disabled">Anti backterial</a>
-									<a href="#" class="dropdown-item disabled">With buttons</a>
-									<a href="#" class="dropdown-item disabled">Extra safety</a>
-								</div>
-							</li>
-							<li class="list-inline-item mr-3 disabled"><a href="#">Color</a></li>
-							<li class="list-inline-item mr-3 disabled"><a href="#">Size</a></li>
-							<li class="list-inline-item mr-3">
-								<div class="form-inline">
-									<label class="mr-2">Price</label>
-									<input class="form-control form-control-sm" placeholder="Min" type="number">
-									<span class="px-2"> - </span>
-									<input class="form-control form-control-sm" placeholder="Max" type="number">
-									<button type="submit" class="btn btn-sm btn-light ml-2">Ok</button>
-								</div>
-							</li>
-							<li class="list-inline-item mr-3">
-								<label class="custom-control mt-1 custom-checkbox">
-									<input type="checkbox" class="custom-control-input">
-									<div class="custom-control-label">Ready to ship
-									</div>
-								</label>
-							</li>
-						</ul>
-					</div> <!-- col.// -->
-				</div> <!-- row.// -->
-			</div> <!-- card-body .// -->
-		</div> <!-- card.// -->
-		<!-- ============================ FILTER TOP END.// ================================= -->
-
 		<header class="mb-3">
 			<div class="form-inline">
-				<strong class="mr-md-auto">32 Items found </strong>
+				<strong class="mr-md-auto">{{searchResult.length}} Item(s) found </strong>
 				<select class="mr-2 form-control">
 					<option>Latest items</option>
 					<option>Trending</option>
