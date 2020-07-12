@@ -61,20 +61,20 @@ describe("Url Check", () => {
       done();
     });
   });
-  it("User Login Success", function (done) {
-    this.timeout(15000);
-    server
-      .post("/login")
-      .send({
-        email: "johndoe@gmail.com",
-        password: "johndoe",
-      })
-      .end((err, res) => {
-        expect(res.status).to.equal(302);
-        if (err) done(err);
-        done();
-      });
-  });
+  // it("User Login Success", function (done) {
+  //   this.timeout(15000);
+  //   server
+  //     .post("/login")
+  //     .send({
+  //       email: "johndoe@gmail.com",
+  //       password: "johndoe",
+  //     })
+  //     .end((err, res) => {
+  //       expect(res.status).to.equal(302);
+  //       if (err) done(err);
+  //       done();
+  //     });
+  // });
   it("Get Cart", function (done) {
     this.timeout(15000);
     server.get("/cart").end((err, res) => {
