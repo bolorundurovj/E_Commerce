@@ -18,7 +18,7 @@ const User = require("../models/user");
 const Cart = require("../models/cart");
 const Token = require("../models/token");
 
-mongoose.connect(`${process.env.DB_PROD}`);
+mongoose.connect(`${process.env.DB_DEV}`);
 const db = mongoose.connection;
 db.on("error", console.log.bind(console, "connection error"));
 db.once("open", function (callback) {
@@ -161,7 +161,7 @@ router.post("/register", function (req, res) {
             // Send the email
             const sengridu = process.env.SENDGRID_USERNAME;
             const sengridp = process.env.SENDGRID_PASSWORD;
-            const transporter = nodemailer.createTransport({
+            let transporter = nodemailer.createTransport({
               service: "Sendgrid",
               auth: {
                 user: sengridu,
@@ -169,10 +169,10 @@ router.post("/register", function (req, res) {
               },
             });
 
-            const send = transporter.templateSender(
+            let send = transporter.templateSender(
               new EmailTemplate("../emails/confirmation"),
               {
-                from: "no-reply@yourwebapplication.com",
+                from: "no-reply@ecommerce.com",
               }
             );
 

@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const createError = require("http-errors");
 const User = require("../models/user");
 
-mongoose.connect(`${process.env.DB_PROD}`);
+mongoose.connect(`${process.env.DB_DEV}`);
 var db = mongoose.connection;
 db.on("error", console.log.bind(console, "connection error"));
 db.once("open", function (callback) {
