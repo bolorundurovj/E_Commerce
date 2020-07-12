@@ -1,18 +1,16 @@
-var express = require("express");
-var router = express.Router();
-var mongoose = require("mongoose");
+const express = require("express");
+const router = express.Router();
+const mongoose = require("mongoose");
+const Product = require("../models/product");
+const Cart = require("../models/cart");
 
-var Product = require("../models/product");
-var Cart = require("../models/cart");
+// mongoose.connect(`${process.env.DB_PROD}`);
+// var db = mongoose.connection;
+// db.on("error", console.log.bind(console, "connection error"));
+// db.once("open", function (callback) {
+//   console.log("Database connection succeeded product");
+// });
 
-mongoose.connect(`${process.env.DB_PROD}`);
-var db = mongoose.connection;
-db.on("error", console.log.bind(console, "connection error"));
-db.once("open", function (callback) {
-  console.log("Database connection succeeded product");
-});
-
-/* GET home page. */
 router.get("/:id", (req, res, next) => {
   Product.findOne({ _id: req.params.id }, function (err, docs) {
     if (err) {

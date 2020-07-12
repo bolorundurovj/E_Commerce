@@ -1,28 +1,28 @@
-var express = require("express");
-var router = express.Router();
-var bcrypt = require("bcrypt-nodejs");
-var mongoose = require("mongoose");
+const express = require("express");
+const router = express.Router();
+const bcrypt = require("bcrypt-nodejs");
+const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
-var bodyParser = require("body-parser");
-var session = require("express-session");
-var MongoStore = require("connect-mongo")(session);
+const bodyParser = require("body-parser");
+const session = require("express-session");
+const MongoStore = require("connect-mongo")(session);
 const nodemailer = require("nodemailer");
-var crypto = require("crypto");
-var EmailTemplate = require("email-templates-v2").EmailTemplate;
+const crypto = require("crypto");
+const EmailTemplate = require("email-templates-v2").EmailTemplate;
 
 require("dotenv").config();
 
-var Product = require("../models/product");
-var Deal = require("../models/deals");
-var User = require("../models/user");
-var Cart = require("../models/cart");
-var Token = require("../models/token");
+const Product = require("../models/product");
+const Deal = require("../models/deals");
+const User = require("../models/user");
+const Cart = require("../models/cart");
+const Token = require("../models/token");
 
-mongoose.connect(`${process.env.DB_PROD}`);
-var db = mongoose.connection;
+mongoose.connect(`${process.env.DB_DEV}`);
+const db = mongoose.connection;
 db.on("error", console.log.bind(console, "connection error"));
 db.once("open", function (callback) {
-  console.log("Database connection succeeded");
+  console.log("Database connection succeeded Index");
 });
 
 /* GET home page. */
@@ -66,8 +66,8 @@ router.get("/", function (req, res, next) {
 
 //Search
 router.post("/search", function (req, res) {
-  var category = req.body.search;
-  var collect = req.body.searchOptions;
+  let category = req.body.search;
+  let collect = req.body.searchOptions;
   console.log(collect);
   console.log(category);
   stringCollect = String(collect);
@@ -89,15 +89,15 @@ router.post("/search", function (req, res) {
 });
 
 router.post("/register", function (req, res) {
-  var firstName = req.body.firstName;
-  var lastName = req.body.lastName;
-  var email = req.body.email;
-  var city = req.body.city;
-  var password = req.body.password;
-  var confirmPassword = req.body.confirmPassword;
-  var country = req.body.country;
-  var gender = req.body.gender;
-  var terms = req.body.terms;
+  const firstName = req.body.firstName;
+  const lastName = req.body.lastName;
+  const email = req.body.email;
+  const city = req.body.city;
+  const password = req.body.password;
+  const confirmPassword = req.body.confirmPassword;
+  const country = req.body.country;
+  const gender = req.body.gender;
+  const terms = req.body.terms;
 
   if (
     !firstName ||
@@ -132,8 +132,8 @@ router.post("/register", function (req, res) {
       } else {
         bcrypt.hash(password, null, null, function (err, hash) {
           // Store hash in your password DB
-          var hashedPass = hash;
-          var user = new User({
+          let hashedPass = hash;
+          let user = new User({
             firstName: firstName,
             lastName: lastName,
             email: email,
@@ -147,7 +147,7 @@ router.post("/register", function (req, res) {
           });
 
           // Create a verification token for this user
-          var token = new Token({
+          let token = new Token({
             _userId: user._id,
             token: crypto.randomBytes(16).toString("hex"),
           });
@@ -161,8 +161,7 @@ router.post("/register", function (req, res) {
             // Send the email
             const sengridu = process.env.SENDGRID_USERNAME;
             const sengridp = process.env.SENDGRID_PASSWORD;
-            console.log(sengridp + "" + sengridu);
-            var transporter = nodemailer.createTransport({
+            const transporter = nodemailer.createTransport({
               service: "Sendgrid",
               auth: {
                 user: sengridu,
@@ -170,7 +169,7 @@ router.post("/register", function (req, res) {
               },
             });
 
-            var send = transporter.templateSender(
+            const send = transporter.templateSender(
               new EmailTemplate("../emails/confirmation"),
               {
                 from: "no-reply@yourwebapplication.com",
@@ -203,90 +202,12 @@ router.post("/register", function (req, res) {
                 }
               }
             );
-
-            // var mailOptions = {
-            //   from: "no-reply@yourwebapplication.com",
-            //   to: user.email,
-            //   subject: "Account Verification Token",
-            //   context: {
-            //     name: user.firstName,
-            //     text:
-            //       "Hello,\n\n" +
-            //       "Please verify your account by clicking the link: \nhttp://" +
-            //       req.headers.host +
-            //       "/confirmation/" +
-            //       token.token +
-            //       ".\n",
-            //   },
-            // };
-            // transporter.sendMail(mailOptions, function (err) {
-            //   if (err) {
-            //     return res.status(500).send({ msg: err.message });
-            //   }
-            //   res.status(200).render("./confirmation", {
-            //     message:
-            //       "A verification email has been sent to " + user.email + ".",
-            //     success: message,
-            //   });
-            // });
           });
 
           user.save((err) => {
             if (err) throw err;
             console.log("New user registered Successfully");
           });
-
-          console.log(user);
-
-          //     var data = {
-          //       "firstName": firstName,
-          //       "lastName": lastName,
-          //       "email":email,
-          //       "password":password,
-          //       "confirmPassword": confirmPassword,
-          //       "hashedPass": hashedPass,
-          //       "city": city,
-          //       "country":country,
-          //       "gender": gender,
-          //       "terms": terms,
-
-          //   }
-          // db.collection('users').insertOne(data,function(err, collection){
-          //       if (err) throw err;
-          //       console.log("New user registered Successfully");
-
-          //   });
-
-          //   let transport = nodemailer.createTransport({
-          //     service: 'gmail',
-          //     auth: {
-          //             user: 'email@gmail.com',
-          //             pass: 'password'
-          //           }
-          //   });
-          //   let message = {
-          //     from: 'email@gmail.com',
-          //     to: email,
-          //     subject: 'Design Your Model S | Tesla',
-          //     html: '<h1>Have the most fun you can in a car!</h1><p>Get your <b>Tesla</b> today!</p>'
-          // };
-
-          //   transport.sendMail(message, function(error, info){
-          //     if (error) {
-          //       console.log(error);
-          //     } else {
-          //       console.log('Email sent: ' + info.response);
-          //     }
-          //   });
-          //   console.log(email);
-          //   var mailOptions = {
-          //     from: 'email@email.com',
-          //     to: 'id@inbox.mailtrap.io',
-          //     subject: 'Test Email',
-          //     html: '<h1>Welcome</h1><p>That was easy!</p>'
-          //   }
-
-          //return res.render('./login', { message:'Registered Successfully. You can login now', success:'message'});
         });
       }
     });
@@ -294,14 +215,13 @@ router.post("/register", function (req, res) {
 });
 
 router.post("/login", function (req, res) {
-  var email = req.body.email;
-  var password = req.body.password;
+  const email = req.body.email;
+  const password = req.body.password;
 
   User.findOne({ email: email }).then((user) => {
     if (user) {
       if (user.isVerified) {
         // Load hash from your password DB.
-        console.log(user.firstName);
         res.cookie("cc", user.firstName, { maxAge: 180 * 60 * 1000 });
         bcrypt.compare(password, user.hashedPass, function (err, isMatch) {
           // res == true
@@ -355,13 +275,9 @@ router.get("/confirmation/:token", (req, res, next) => {
 });
 
 router.post("/confirmation", (req, res, next) => {
-  // req.assert('email', 'Email is not valid').isEmail();
-  // req.assert('email', 'Email cannot be blank').notEmpty();
-  // req.assert('token', 'Token cannot be blank').notEmpty();
-  // req.sanitize('email').normalizeEmail({ remove_dots: false });
 
-  var email = req.body.email;
-  var token = req.body.token;
+  const email = req.body.email;
+  const token = req.body.token;
 
   console.log(token);
 
@@ -380,10 +296,7 @@ router.post("/confirmation", (req, res, next) => {
         });
 
       // If we found a token, find a matching user
-      User.findOne({ _id: token._userId, email: req.body.email }, function (
-        err,
-        user
-      ) {
+      User.findOne({ _id: token._userId, email: req.body.email }, function (err, user) {
         if (!user)
           return res
             .status(400)

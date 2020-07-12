@@ -1,8 +1,7 @@
-var express = require("express");
-var router = express.Router();
-
-var User = require("../models/user");
-var Token = require("../models/token");
+const express = require("express");
+const router = express.Router();
+const User = require("../models/user");
+const Token = require("../models/token");
 
 /* GET home page. */
 router.get("/:token", (req, res, next) => {
@@ -19,8 +18,8 @@ router.post("/confirmation", (req, res, next) => {
   req.assert("token", "Token cannot be blank").notEmpty();
   req.sanitize("email").normalizeEmail({ remove_dots: false });
 
-  var email = req.body.email;
-  var token = req.params.token;
+  let email = req.body.email;
+  let token = req.params.token;
 
   console.log(token);
 

@@ -1,10 +1,9 @@
-var express = require("express");
-var router = express.Router();
-var jwt = require("jsonwebtoken");
-var mongoose = require("mongoose");
-var createError = require("http-errors");
-
-var User = require("../models/user");
+const express = require("express");
+const router = express.Router();
+const jwt = require("jsonwebtoken");
+const mongoose = require("mongoose");
+const createError = require("http-errors");
+const User = require("../models/user");
 
 mongoose.connect(`${process.env.DB_PROD}`);
 var db = mongoose.connection;

@@ -1,12 +1,11 @@
-var express = require("express");
-var router = express.Router();
-var mongoose = require("mongoose");
-
-var Deal = require("../models/deals");
-var Cart = require("../models/cart");
+const express = require("express");
+const router = express.Router();
+const mongoose = require("mongoose");
+const Deal = require("../models/deals");
+const Cart = require("../models/cart");
 
 mongoose.connect(`${process.env.DB_PROD}`);
-var db = mongoose.connection;
+const db = mongoose.connection;
 db.on("error", console.log.bind(console, "connection error"));
 db.once("open", function (callback) {
   console.log("Database connection succeeded deals");

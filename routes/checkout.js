@@ -1,9 +1,9 @@
-var express = require("express");
-var router = express.Router();
-var session = require("express-session");
-var MongoStore = require("connect-mongo")(session);
-var mongoose = require("mongoose");
-var Handlebars = require("hbs");
+const express = require("express");
+const router = express.Router();
+const session = require("express-session");
+const MongoStore = require("connect-mongo")(session);
+const mongoose = require("mongoose");
+const Handlebars = require("hbs");
 const jwt = require("jsonwebtoken");
 
 router.use(
@@ -18,7 +18,6 @@ router.use(
 
 const checkToken = (req, res, next) => {
   const header = req.headers["authorization"];
-
   const heads = req.cookies.token;
 
   if (typeof heads !== "undefined") {
@@ -29,7 +28,6 @@ const checkToken = (req, res, next) => {
     console.log(req.token);
     next();
   } else {
-    //If header is undefined return Forbidden (403)
     res.render("./login", { message: "You need to log in" });
   }
 };
@@ -57,10 +55,10 @@ router.get("/", checkToken, (req, res, next) => {
     }
   });
 
-  var cart = req.session.cart;
-  var displayCart = { items: [], total: 0 };
-  var total = 0;
-  var totalQ = 0;
+  let cart = req.session.cart;
+  let displayCart = { items: [], total: 0 };
+  let total = 0;
+  let totalQ = 0;
 
   for (var item in cart) {
     displayCart.items.push(cart[item]);
@@ -69,7 +67,7 @@ router.get("/", checkToken, (req, res, next) => {
   }
   displayCart.total = total;
 
-  var totalQty = totalQ;
+  let totalQty = totalQ;
 
   res.render("checkout", {
     title: "E-Commerce || Checkout",

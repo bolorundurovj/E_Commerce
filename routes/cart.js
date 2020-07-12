@@ -1,19 +1,19 @@
-var express = require("express");
-var router = express.Router();
-var mongoose = require("mongoose");
-var session = require("express-session");
-var MongoStore = require("connect-mongo")(session);
-var Handlebars = require("hbs");
+const express = require("express");
+const router = express.Router();
+const mongoose = require("mongoose");
+const session = require("express-session");
+const MongoStore = require("connect-mongo")(session);
+const Handlebars = require("hbs");
 
-var Product = require("../models/product");
-var Deal = require("../models/deals");
+const Product = require("../models/product");
+const Deal = require("../models/deals");
 
-mongoose.connect(`${process.env.DB_PROD}`);
-var db = mongoose.connection;
-db.on("error", console.log.bind(console, "connection error"));
-db.once("open", function (callback) {
-  console.log("Database connection succeeded cart");
-});
+// mongoose.connect(`${process.env.DB_PROD}`);
+// var db = mongoose.connection;
+// db.on("error", console.log.bind(console, "connection error"));
+// db.once("open", function (callback) {
+//   console.log("Database connection succeeded cart");
+// });
 
 router.use(
   session({
@@ -110,7 +110,7 @@ router.post("/:id", function (req, res) {
       console.log(cart);
     }
 
-    var totalQuantity = 0;
+    let totalQuantity = 0;
     //Get Total
     for (var item in cart) {
       totalQuantity += Number(cart[item].qty);

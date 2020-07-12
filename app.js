@@ -1,37 +1,42 @@
-var createError = require("http-errors");
-var express = require("express");
-var path = require("path");
-var cookieParser = require("cookie-parser");
-var logger = require("morgan");
+const createError = require("http-errors");
+const express = require("express");
+const path = require("path");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
-var session = require("express-session");
-var MongoStore = require("connect-mongo")(session);
+const session = require("express-session");
+const MongoStore = require("connect-mongo")(session);
 require('dotenv').config();
 
 // Connecting to Mongoose
-mongoose.connect(`${process.env.DB_PROD}`, {
+mongoose.connect(`${process.env.DB_DEV}`, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
 
-var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
-var helpRouter = require("./routes/help");
-var loginRouter = require("./routes/login");
-var registerRouter = require("./routes/register");
-var cartRouter = require("./routes/cart");
-var profileRouter = require("./routes/profile");
-var checkoutRouter = require("./routes/checkout");
-var productRouter = require("./routes/product");
-var gridPageRouter = require("./routes/grid-page");
-var listPageRouter = require("./routes/list-page");
-var dealRouter = require("./routes/deals");
-var orderRouter = require("./routes/orders");
-var clotheRouter = require("./routes/clothing");
-var wishRouter = require("./routes/wishlist");
+const dbStat = mongoose.connection;
+dbStat.on("error", console.log.bind(console, "connection error"));
+dbStat.once("open", function (callback) {
+  console.log("Database connection succeeded Index");
+});
 
-var app = express();
+const indexRouter = require("./routes/index");
+const usersRouter = require("./routes/users");
+const helpRouter = require("./routes/help");
+const loginRouter = require("./routes/login");
+const registerRouter = require("./routes/register");
+const cartRouter = require("./routes/cart");
+const profileRouter = require("./routes/profile");
+const checkoutRouter = require("./routes/checkout");
+const productRouter = require("./routes/product");
+const gridPageRouter = require("./routes/grid-page");
+const listPageRouter = require("./routes/list-page");
+const dealRouter = require("./routes/deals");
+const orderRouter = require("./routes/orders");
+const clotheRouter = require("./routes/clothing");
+const wishRouter = require("./routes/wishlist");
+const app = express();
 
 // view engine setup.
 app.set("views", path.join(__dirname, "views"));
