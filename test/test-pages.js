@@ -5,14 +5,14 @@ const app = require("../app");
 const server = supertest(app);
 
 describe("Url Check", () => {
-  it("HomePage Status", function (done) {
-    this.timeout(15000);
-    server.get("/").end((err, res) => {
-      expect(res.status).to.equal(200);
-      if (err) done(err);
-      done();
-    });
-  });
+  // it("HomePage Status", function (done) {
+  //   this.timeout(15000);
+  //   server.get("/").end((err, res) => {
+  //     expect(res.status).to.equal(200);
+  //     if (err) done(err, app);
+  //     done();
+  //   });
+  // });
   it("LoginPage Status", function (done) {
     this.timeout(15000);
     server.get("/login").end((err, res) => {
@@ -45,14 +45,14 @@ describe("Url Check", () => {
       done();
     });
   });
-  it("Real Specific DealPage Status", function (done) {
-    this.timeout(15000);
-    server.get("/deal/5e2736ac4380f63124bcae33").end((err, res) => {
-      expect(res.status).to.equal(200);
-      if (err) done(err);
-      done();
-    });
-  });
+  // it("Real Specific DealPage Status", function (done) {
+  //   this.timeout(15000);
+  //   server.get("/deal/5e2736ac4380f63124bcae33").end((err, res) => {
+  //     expect(res.status).to.equal(200);
+  //     if (err) done(err);
+  //     done();
+  //   });
+  // });
   it("ProfilePage Protect", function (done) {
     this.timeout(15000);
     server.get("/profile").end((err, res) => {
