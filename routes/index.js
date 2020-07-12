@@ -275,7 +275,6 @@ router.get("/confirmation/:token", (req, res, next) => {
 });
 
 router.post("/confirmation", (req, res, next) => {
-
   const email = req.body.email;
   const token = req.body.token;
 
@@ -296,7 +295,10 @@ router.post("/confirmation", (req, res, next) => {
         });
 
       // If we found a token, find a matching user
-      User.findOne({ _id: token._userId, email: req.body.email }, function (err, user) {
+      User.findOne({ _id: token._userId, email: req.body.email }, function (
+        err,
+        user
+      ) {
         if (!user)
           return res
             .status(400)

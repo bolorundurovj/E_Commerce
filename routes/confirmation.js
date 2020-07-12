@@ -29,12 +29,10 @@ router.post("/confirmation", (req, res, next) => {
     // Find a matching token
     Token.findOne({ token: req.params.token }, function (err, token) {
       if (!token)
-        return res
-          .status(400)
-          .send({
-            msg:
-              "We were unable to find a valid token. Your token may have expired.",
-          });
+        return res.status(400).send({
+          msg:
+            "We were unable to find a valid token. Your token may have expired.",
+        });
 
       // If we found a token, find a matching user
       User.findOne({ _id: token._userId, email: req.body.email }, function (

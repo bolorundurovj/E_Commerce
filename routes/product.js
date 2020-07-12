@@ -4,13 +4,6 @@ const mongoose = require("mongoose");
 const Product = require("../models/product");
 const Cart = require("../models/cart");
 
-// mongoose.connect(`${process.env.DB_PROD}`);
-// var db = mongoose.connection;
-// db.on("error", console.log.bind(console, "connection error"));
-// db.once("open", function (callback) {
-//   console.log("Database connection succeeded product");
-// });
-
 router.get("/:id", (req, res, next) => {
   Product.findOne({ _id: req.params.id }, function (err, docs) {
     if (err) {
