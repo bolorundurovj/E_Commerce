@@ -10,7 +10,7 @@ const MongoStore = require("connect-mongo")(session);
 require('dotenv').config();
 
 // Connecting to Mongoose
-mongoose.connect(`${process.env.DB_DEV}`, {
+mongoose.connect(`${process.env.DB_PROD}`, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
