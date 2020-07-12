@@ -247,21 +247,11 @@ router.post("/login", function (req, res) {
         });
       } else {
         console.log("user is not verified");
-        res.redirect(
-          "/login?e=" +
-            encodeURIComponent({
-              message:
-                "You need to verify your account to login. Please check your email",
-            })
-        );
+        res.render("./login", { message: "You need to be verified. Check your email" });
       }
     } else {
       console.log("user does not exist");
-      //res.render('/login', { message:'User does not exist', data });
-      res.redirect(
-        "/login?e=" +
-          encodeURIComponent({ message: "Incorrect username or password" })
-      );
+      res.render("./login", { message: "Hmm... we cannot find that user" });
     }
   });
 });
