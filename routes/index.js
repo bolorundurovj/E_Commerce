@@ -159,49 +159,26 @@ router.post("/register", function (req, res) {
             }
 
             // Send the email
-            const sengridu = process.env.SENDGRID_USERNAME;
-            const sengridp = process.env.SENDGRID_PASSWORD;
             const transporter = nodemailer.createTransport({
-              service: "Sendgrid",
-              auth: {
-                user: sengridu,
-                pass: sengridp,
-              },
+              service: 'Sendgrid',
+              // eslint-disable-next-line max-len
+              auth: { user: process.env.SENDGRID_USERNAME, pass: process.env.SENDGRID_PASSWORD }
             });
-
-            const send = transporter.templateSender(
-              new EmailTemplate("../emails/confirmation"),
-              {
-                from: "no-reply@yourwebapplication.com",
+            const mailOptions = {
+              from: 'no-reply@ecommerce.com',
+              to: user.email,
+              subject: 'Account Verification Token',
+              text: `${'Hello,\n\n Please verify your account by clicking the link: \nhttp://'}${
+                req.headers.host
+              }/confirmation/${token.token}\n`
+            };
+            // eslint-disable-next-line no-shadow
+            transporter.sendMail(mailOptions, (err) => {
+              if (err) {
+                return res.status(500).send({ msg: err.message });
               }
-            );
-
-            // use template based sender to send a message
-            send(
-              {
-                to: user.email,
-                // EmailTemplate renders html and text but no subject so we need to
-                // set it manually either here or in the defaults section of templateSender()
-                subject: "Account verification token",
-              },
-              {
-                name: user.firstName,
-                text:
-                  "Hello,\n\n" +
-                  "Please verify your account by clicking the link: \nhttp://" +
-                  req.headers.host +
-                  "/confirmation/" +
-                  token.token +
-                  ".\n",
-              },
-              function (err, info) {
-                if (err) {
-                  console.log("Error");
-                } else {
-                  console.log("Token sent");
-                }
-              }
-            );
+              return res.status(200).send(`A verification email has been sent to ${user.email}.`);
+            });
           });
 
           user.save((err) => {
