@@ -58,7 +58,3 @@ npm run test
 Give a ⭐️ if this project helped you!
 
 [![support us](https://img.shields.io/badge/become-a patreon%20us-orange.svg?cacheSeconds=2592000)](https://www.patreon.com/bolorundurovb)
-
-
-***
-_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
