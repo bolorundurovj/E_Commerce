@@ -22,9 +22,9 @@
 
 > A Full-Stack E-Commerce store with full features
 
-### 🏠 [Homepage](ecommerce.herokuapp.com)
+### 🏠 [Homepage](https://ecommerce.herokuapp.com)
 
-### ✨ [Demo](ecommerce.herokuapp.com)
+### ✨ [Demo](https://ecommerce.herokuapp.com)
 
 ## Install
 
