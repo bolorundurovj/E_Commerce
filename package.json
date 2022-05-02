@@ -22,7 +22,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.7",
     "morgan": "~1.9.1",
-    "nodemailer": "^6.4.16"
+    "nodemailer": "^6.6.1"
   },
   "description": "A Full-Stack E-Commerce store with full features",
   "devDependencies": {
